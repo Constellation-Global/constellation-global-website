@@ -1,20 +1,20 @@
 <template>
-  <div class="bg-secondary pb-5">
+  <div class="pb-5 bg-secondary">
     <x-header-navigation light/>
     <x-container>
-      <x-two-cols-grid class="text-white items-center">
-        <div class="flex flex-col gap-8 md:gap-10">
-          <div class="text-5xl md:text-6xl font-bold md:leading-[92.61px]">
+      <x-two-cols-grid class="items-center text-white">
+        <div class="flex flex-col gap-6 md:gap-10">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug lg:leading-[80px]">
             The future is a fully connected <span class="text-accent">workforce</span>
-          </div>
-          <div>Let us take the lead and assist you in building best teams worldwide - quickly and compliantly.</div>
-          <div class="flex gap-5 flex-wrap">
+          </h1>
+          <p class="text-base md:text-xl lg:leading-9">Let us take the lead and assist you in building best teams worldwide - quickly and compliantly.</p>
+          <div class="flex flex-wrap gap-5">
             <x-button color="secondary" outlined>Speak with sales</x-button>
             <x-button color="secondary">Start hiring</x-button>
           </div>
         </div>
         <div>
-          <img :src="HeroImage" alt="Fully connected workforce"/>
+          <img :src="HeroSVG" alt="Fully connected workforce"/>
         </div>
       </x-two-cols-grid>
     </x-container>
@@ -25,7 +25,7 @@
   <x-container>
     <x-two-cols-grid>
       <img :src="WhatWeDoImage" alt="What we do" class="order-1 md:order-0"/>
-      <div class="order-0 md:order-1">
+      <div class="order-0 md:order-1 text-content">
         <div class="container-title linegreen">What we do</div>
         <p>
           An Employer of Record (EOR) is an organization that helps companies expand internationally by hiring and
@@ -49,7 +49,7 @@
       <div>
         <div class="container-super-title linegreen">Hiring</div>
         <div class="container-title">Integrate Team<br/> Members Quickly</div>
-        <p>Expand your workforce with the very best talent from across the globe, and employ them almost anywhere.</p>
+        <p class="text-content">Expand your workforce with the very best talent from across the globe, and employ them almost anywhere.</p>
       </div>
       <img :src="HiringImage" alt="Hiring"/>
     </x-two-cols-grid>
@@ -61,7 +61,7 @@
       <div class="order-0 md:order-1">
         <div class="container-super-title linegreen">Payroll</div>
         <div class="container-title">International payroll made easy</div>
-        <p>
+        <p class="text-content">
           Ensure full compliance across all your payrolls, with safety being a primary benefit of our streamlined,
           encrypted portal.
         </p>
@@ -75,24 +75,24 @@
       <div>
         <div class="container-super-title linegreen">Benefits</div>
         <div class="container-title">Keep your talent—and keep them happy</div>
-        <p>Get new employees on your payroll fast and in full compliance with our automated platform</p>
+        <p class="text-content">Get new employees on your payroll fast and in full compliance with our automated platform</p>
         <x-button color="accent" outlined class="mt-6">Start now</x-button>
       </div>
       <img :src="BenefitImage" alt="Benefit"/>
     </x-two-cols-grid>
   </x-container>
 
-  <div class="bg-stone-50 py-10">
+  <div class="py-10 bg-stone-50">
     <x-container>
       <div class="container-super-title linegreen">Ready to get started?</div>
       <div class="container-title max-w-[580px] pb-20">Say hello to a world without borders in three easy steps</div>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 ">
         <div
-            class="flex flex-col items-center text-center rounded-2xl hover:shadow p-10 bg-white"
+            class="flex flex-col items-center p-10 text-center bg-white rounded-2xl hover:shadow"
             v-for="(os,x) in getStarted" :key="x">
           <img class="h-16" :src="os.icon" :alt="os.title">
-          <div class="font-semibold py-3">{{ os.title }}</div>
-          <div class="text-xl">{{ os.content }}</div>
+          <div class="py-3 text-lg font-semibold md:text-xl">{{ os.title }}</div>
+          <div class="text-sm leading-7 md:text-base lg:leading-7">{{ os.content }}</div>
         </div>
       </div>
     </x-container>
@@ -105,12 +105,12 @@
 
     <x-two-cols-grid>
       <img :src="BrilliantTeam" alt=""/>
-      <div>
-        <div class="text-3xl font-semibold my-5">Tim Disbrey</div>
-        <div class="text-2xl my-5">Founder & CEO</div>
-        <p class="text-md ">Second time founder. 10+ years Special Forces officer. Operational and business experience
+      <div class="text-content">
+        <div class="mb-5 text-2xl font-semibold md:text-3xl">Tim Disbrey</div>
+        <div class="my-5 text-lg font-medium md:text-xl">Founder & CEO</div>
+        <p class="text-base leading-7 md:text-base lg:leading-8">Second time founder. 10+ years Special Forces officer. Operational and business experience
           in over 40 countries. Three Master’s Degrees and a PhD. Speaks German and English.</p>
-        <x-button color="primary" outlined class="w-40 mt-5">See all</x-button>
+        <x-button color="primary" outlined class="px-8 py-2 mt-5 md:px-16">See all</x-button>
       </div>
     </x-two-cols-grid>
   </x-container>
@@ -126,6 +126,7 @@ import XHeaderNavigation from "@/components/XHeaderNavigation.vue";
 import XButton from "@/components/XButton.vue";
 import XContainer from "@/components/XContainer.vue";
 import HeroImage from "@/assets/homepage/hero-image.png";
+import HeroSVG from "@/assets/homepage/hero.svg";
 import OurPartners from "@/components/page-parts/OurPartners.vue";
 import XTwoColsGrid from "@/components/XTwoColsGrid.vue";
 import WhatWeDoImage from "@/assets/homepage/what-we-do.png";

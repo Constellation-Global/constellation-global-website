@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex md:flex-row flex-wrap gap-10 md:gap-20 items-center justify-center px-6 my-10 lg:my-20">
+    <div class="flex flex-wrap items-center justify-center gap-10 px-6 my-10 md:flex-row md:gap-20 lg:my-20">
       <component
           :is="partner.logo"
           v-for="(partner, i) in partners"

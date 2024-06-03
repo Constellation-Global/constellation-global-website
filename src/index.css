@@ -12,20 +12,24 @@ body {
     color: #344563;
 }
 
-p {
+/* p {
     @apply py-4;
-}
+} */
 
 .linegreen::after {
-    @apply w-20 h-1 rounded-full bg-linegreen mt-2;
+    @apply w-16 h-1 mt-2 rounded-full md:w-20 bg-linegreen;
     content: '';
     display: block;
 }
 
 .container-title {
-    @apply text-4xl my-4 font-semibold;
+    @apply my-4 text-2xl font-semibold md:text-4xl;
 }
 
 .container-super-title {
-    @apply text-2xl mb-5;
+    @apply mb-5 text-xl md:text-2xl;
+}
+
+.text-content {
+    @apply text-base leading-7 md:text-xl lg:leading-8
 }

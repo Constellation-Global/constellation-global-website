@@ -1,18 +1,18 @@
 <template>
 
-  <a v-if="href && external" :href="href" role="button" :class="colorCss" class="btn shadow-none px-10">
+  <a v-if="href && external" :href="href" role="button" :class="colorCss" class="px-5 shadow-none md:px-10 btn">
     <slot name="prepend" class="mr-2"></slot>
     <slot/>
     <slot name="append" class="ml-2"></slot>
   </a>
 
-  <router-link v-else-if="href" :to="href" role="button" :class="colorCss" class="btn shadow-none px-10">
+  <router-link v-else-if="href" :to="href" role="button" :class="colorCss" class="px-5 shadow-none md:px-10 btn">
     <slot name="prepend" class="mr-2"></slot>
     <slot/>
     <slot name="append" class="ml-2"></slot>
   </router-link>
 
-  <button v-else role="button" :class="colorCss" class="btn shadow-none px-10">
+  <button v-else role="button" :class="colorCss" class="px-5 shadow-none md:px-10 btn">
     <slot name="prepend" class="mr-2"></slot>
     <slot/>
     <slot name="append" class="ml-2"></slot>

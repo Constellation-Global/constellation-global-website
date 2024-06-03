@@ -1,5 +1,6 @@
 <template>
-  <div class="grid lg:grid-cols-2 lg:gap-16 gap-10 lg:py-10 items-center">
+  <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+  <!-- <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16 lg:py-10"> -->
     <slot />
   </div>
 </template>

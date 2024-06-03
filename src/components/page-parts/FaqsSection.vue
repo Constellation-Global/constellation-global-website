@@ -1,14 +1,14 @@
 <template>
-  <div class="bg-stone-50 py-10">
+  <div class="py-10 bg-stone-50">
     <x-container>
       <div class="container-super-title">FAQ</div>
       <div class="container-title">Frequently asked questions</div>
 
-      <div class="grid md:grid-cols-2 gap-5 py-10">
-        <div class="gap-5 flex flex-col">
+      <div class="grid gap-5 py-10 md:grid-cols-2 text-content">
+        <div class="flex flex-col gap-5">
           <x-faq :faq="faq" v-for="(faq, x) in faqsEven" :key="x"/>
         </div>
-        <div class="gap-5 flex flex-col">
+        <div class="flex flex-col gap-5">
           <x-faq :faq="faq" v-for="(faq, x) in faqsOdd" :key="x"/>
         </div>
       </div>
