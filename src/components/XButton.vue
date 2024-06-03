@@ -33,7 +33,7 @@ const colorCss = computed(() => {
     case 'primary':
       return props.outlined
           ? 'border-primary hover:border-primary text-primary hover:text-white bg-white hover:bg-primary'
-          : 'bg-primary hover:bg-green-900 border-primary hover:border-green-900 text-white';
+          : 'bg-primary hover:bg-primary/70 border-primary hover:border-primary/70 text-white';
 
     case 'secondary':
       return props.outlined
