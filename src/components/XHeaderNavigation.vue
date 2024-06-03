@@ -1,7 +1,7 @@
 <template>
   <div class="drawer drawer-end">
     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col">
+    <div class="flex flex-col drawer-content">
       <!-- Navbar -->
       <div class="navbar py-6 max-w-[1200px] mx-auto px-6" :class="light?'text-white':''">
         <div class="flex-1">
@@ -26,7 +26,7 @@
               <router-link
                 :to="`${a.href}`"
                 class="px-4"
-                :active-class="light && route.path == a.href ? 'text-primary hover:text-primary': route.path == a.href?'hover:text-[#506CDE] text-[#506CDE]':''">
+                :active-class="light && route.path == a.href ? 'text-primary hover:text-primary font-semibold': route.path == a.href?'hover:text-[#506CDE] text-[#506CDE] font-semibold':''">
                 {{ a.label }}
               </router-link>
             </li>
@@ -34,15 +34,17 @@
         </div>
       </div>
     </div>
-    <div class="drawer-side">
+    <div class="z-20 drawer-side">
       <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
-      <ul class="menu p-4 w-80 min-h-full bg-base-200 text-lg gap-1">
+      <ul class="min-h-full gap-4 p-4 text-lg rounded-tl-lg pt-28 menu w-80 bg-base-200">
         <!-- Sidebar content here -->
         <li v-for="(a,b) in navConfig" :key="b">
           <router-link
             :to="`${a.href}`"
-            class="px-4 hover:bg-secondary hover:text-white"
-            :active-class="route.path == a.href?'bg-primary text-white':''">
+            class="hover:bg-secondary hover:text-white text-base md:text-lg pb-1.5 px-4 font-medium"
+            :active-class="route.path == a.href ? 'text-primary border-b-2 border-primary':''">
+            <!-- class="px-4 hover:bg-secondary hover:text-white"
+            :active-class="route.path == a.href?'bg-primary text-white':''"> -->
             {{ a.label }}
           </router-link>
         </li>
