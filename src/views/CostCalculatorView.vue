@@ -1,15 +1,17 @@
 <template>
-  <div class="bg-secondary pb-5">
+  <div class="pb-5 bg-secondary">
     <x-header-navigation light/>
     <x-container>
-      <x-two-cols-grid class="text-white items-center">
+      <x-two-cols-grid class="items-center text-white">
         <div class="flex flex-col gap-10">
-          <div class="">Cost calculator</div>
-          <div class="text-5xl md:text-6xl font-bold">
-            Hire and pay in <span class="text-accent">102+</span> countries
+          <div class="flex flex-col gap-2">
+            <div class="text-content">Cost calculator</div>
+            <div class="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug lg:leading-[70px]">
+              Hire and pay in <span class="text-accent">102+</span> countries
+            </div>
           </div>
-          <div>Let us take the wheel and help manage everything related to paying your global workforce.</div>
-          <div class="flex gap-5 flex-wrap">
+          <div class="text-base md:text-xl lg:leading-9">Let us take the wheel and help manage everything related to paying your global workforce.</div>
+          <div class="flex flex-wrap gap-5">
             <x-button color="secondary" outlined>Select country</x-button>
             <x-button color="secondary">Start Now</x-button>
           </div>
@@ -22,40 +24,40 @@
   </div>
 
   <x-container>
-    <div class="container-super-title text-linegreen">Pricing</div>
+    <div class="pt-5 md:pt-8 container-super-title text-linegreen">Pricing</div>
     <div class="container-title">Our Price</div>
-    <p>Discover our wide range of pricing options suitable for you. Whether you want to hire a contractor in the UK,
+    <p class="text-content">Discover our wide range of pricing options suitable for you. Whether you want to hire a contractor in the UK,
       twenty employees in Brazil or run payroll in thirteen different countries where you own entities. You can do it
       all with Constellation global.</p>
 
-    <div class="flex flex-col gap-10 py-20">
+    <div class="flex flex-col py-20 gap-14">
       <div v-for="(p,x) in pricing" :key="x"
-           class="shadow-md rounded-3xl grid md:grid-cols-2 grid-cols-1 overflow-hidden max-w-[720px] border mx-auto">
-        <div class="p-10 flex flex-col gap-3 bg-white">
-          <div class="flex gap-3 items-center">
+           class="shadow-md rounded-xl grid md:grid-cols-2 grid-cols-1 overflow-hidden max-w-[900px] border mx-auto">
+        <div class="flex flex-col gap-3 p-10 bg-white md:w-[85%]">
+          <div class="flex items-center gap-3">
             <div class="h-14 w-14 rounded-xl bg-[#ECEBFF] flex items-center justify-center">
               <div class="h-10 w-10 rounded-full bg-gradient-to-r from-50% from-primary to-white to-0%"></div>
             </div>
             <div>
-              <div class="text-sm">Pro</div>
-              <div class="font-semibold">For {{ p.type }}</div>
+              <div class="text-sm font-medium">Pro</div>
+              <div class="font-bold">For {{ p.type }}</div>
             </div>
           </div>
-          <div class="text-sm">{{ p.summary }}</div>
+          <div class="mb-1 text-sm">{{ p.summary }}</div>
           <div>
-            <span class="text-3xl font-semibold">${{ p.price }}</span>
-            <span class="text-sm">/{{ p.frequency }}</span>
+            <span class="text-3xl font-bold">${{ p.price }}</span>
+            <span class="text-sm">{{ " " }}/{{ p.frequency }}</span>
           </div>
-          <div>
-            <x-button color="primary" :href="p.href" external target="_blank">Get started</x-button>
+          <div class="mt-1.5">
+            <x-button color="primary" class="w-full" :href="p.href" external target="_blank">Get started</x-button>
           </div>
         </div>
         <div class="bg-[#F7F7FC] p-10 flex items-center">
           <div class="text-sm">
-            <div class="py-2 font-semibold">What's included</div>
-            <div v-for="(f,y) in p.features" :key="`${y}-${x}`" class="text-sm py-1 flex items-center gap-3">
-              <div class="h-6 w-6 rounded-full bg-primary flex items-center justify-center">
-                <check-mark-icon class="h-4 w-4 text-white"/>
+            <div class="pb-3 font-bold">What's included</div>
+            <div v-for="(f,y) in p.features" :key="`${y}-${x}`" class="flex items-center gap-4 py-1 text-sm font-medium">
+              <div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary">
+                <check-mark-icon class="w-4 h-4 text-white"/>
               </div>
               {{f}}
             </div>
@@ -76,6 +78,7 @@ import XButton from "@/components/XButton.vue";
 import CheckMarkIcon from "@/components/icons/CheckMarkIcon.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import CountriesImage from "@/assets/countries.png";
+
 
 const pricing = [
   {

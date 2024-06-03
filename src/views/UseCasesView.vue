@@ -2,20 +2,21 @@
   <x-page-header title="Use cases"/>
 
   <div class="">
-  <x-container class="flex flex-col gap-10 items-center md:py-32 py-10">
-    <div class="container-title">Introducing Case studies</div>
-    <div>Stay tuned for something amazing</div>
+  <x-container class="flex flex-col items-center gap-12 py-10 md:py-32">
+    <div class="flex flex-col items-center gap-2 text-center">
+      <div class="container-title">Introducing Case studies</div>
+      <div class="text-content">Stay tuned for something amazing</div>
+    </div>
     <img :src="CaseStudiesComingSoon" alt="Coming Soon" class="mx-auto"/>
-
-    <div class="max-w-[760px] w-full">
-      <p>Subscribe to our mailing list to get latest updates</p>
+    <div class="max-w-[760px] w-full flex flex-col gap-4">
+      <p class="text-content">Subscribe to our mailing list to get latest updates</p>
       <form>
-        <div class="join w-full">
-          <input class="focus:outline-none border-accent focus:border-accent input rounded-l-2xl w-full input-bordered join-item" placeholder="Email"/>
-          <x-button color="accent" outlined class="hover:border-accent border-accent join-item rounded-r-2xl">Subscribe</x-button>
+        <div class="w-full join">
+          <input class="w-full text-sm rounded-l-lg focus:outline-none border-accent focus:border-accent input input-bordered join-item" placeholder="Email"/>
+          <x-button color="accent" outlined class="text-sm rounded-r-lg hover:border-accent border-accent join-item">Subscribe</x-button>
         </div>
       </form>
-    </div>
+    </div> 
   </x-container>
   </div>
 

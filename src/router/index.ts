@@ -5,6 +5,7 @@ import AboutView from "@/views/AboutView.vue";
 import UseCasesView from "@/views/UseCasesView.vue";
 import InnovationView from "@/views/InnovationView.vue";
 import CostCalculatorView from "@/views/CostCalculatorView.vue";
+import NotFound from "@/views/NotFound.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,7 +35,11 @@ const router = createRouter({
                 {
                     path: 'pricing',
                     component: CostCalculatorView,
-                }
+                },
+                { 
+                    path: '/:pathMatch(.*)*', 
+                    name: 'NotFound', component: NotFound 
+                },
             ]
         }
     ]

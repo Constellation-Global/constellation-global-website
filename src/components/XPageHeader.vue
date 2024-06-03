@@ -2,7 +2,7 @@
   <div class="h-[60vh] flex flex-col relative shadow-lg shadow-stone-100 overflow-hidden">
     <x-white-patch-background class="z-1"/>
     <x-header-navigation/>
-    <div class="text-primary text-6xl font-semibold text-center flex items-center justify-center flex-1 pb-[58px] relative z-10">
+    <div class="text-primary text-4xl md:text-5xl font-bold text-center flex items-center justify-center flex-1 pb-[58px] relative z-10">
       {{ title }}
     </div>
   </div>

@@ -31,5 +31,5 @@ body {
 }
 
 .text-content {
-    @apply text-base leading-7 md:text-xl lg:leading-8
+    @apply text-base leading-7 md:text-lg lg:leading-10
 }
