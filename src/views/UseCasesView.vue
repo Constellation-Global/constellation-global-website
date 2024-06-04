@@ -2,7 +2,7 @@
   <x-page-header title="Use cases"/>
 
   <div class="">
-  <x-container class="flex flex-col items-center gap-12 py-10 md:py-32">
+  <x-container class="flex flex-col items-center gap-12 py-10 md:py-32 bg-[url('src/assets/usecase.svg')]  md:bg-right-bottom bg-contain">
     <div class="flex flex-col items-center gap-2 text-center">
       <div class="container-title">Introducing Case studies</div>
       <div class="text-content">Stay tuned for something amazing</div>
