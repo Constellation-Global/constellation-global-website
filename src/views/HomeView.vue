@@ -2,15 +2,15 @@
   <div class="pb-20 bg-secondary">
     <x-header-navigation light/>
     <x-container>
-      <x-two-cols-grid class="items-center text-white">
-        <img :src="HeroSVG" alt="Fully connected workforce" class="md:order-1"/>
-        <div class="flex flex-col gap-6 md:gap-10 text-center md:text-left">
+      <x-two-cols-grid class="text-white lg:min-h-[70vh]">
+        <img :src="HeroSVG" alt="Fully connected workforce" class="lg:order-1 lg:min-w-[85%]" />
+        <div class="flex flex-col items-center max-w-lg text-center lg:items-start gap-7 md:gap-10 lg:text-left">
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug lg:leading-[80px]">
             The future is a fully connected <span class="text-accent">workforce</span>
           </h1>
           <p class="text-base md:text-xl lg:leading-9">Let us take the lead and assist you in building best teams
             worldwide - quickly and compliantly.</p>
-          <div class="flex flex-wrap gap-5 justify-center md:justify-start">
+          <div class="flex flex-wrap justify-center gap-5 mt-6 md:mt-3 lg:mt-0 md:justify-start">
             <x-button color="secondary" outlined href="/support/#contact-form">Speak with sales</x-button>
             <x-button color="secondary" :href="appConfig.registerLink" target="_blank" external>Start hiring</x-button>
           </div>
@@ -19,46 +19,48 @@
     </x-container>
   </div>
 
-  <our-partners/>
+  <our-partners />
 
   <x-container>
-    <x-two-cols-grid>
+    <div class="grid gap-10 py-10 text-center lg:py-16 place-items-center lg:grid-cols-2 lg:gap-16 md:text-left">
       <img :src="WhatWeDoImage" alt="What we do" class="order-1 md:order-0"/>
-      <div class="order-0 md:order-1 text-content">
-        <div class="container-title linegreen">What we do</div>
-        <p>
-          An Employer of Record (EOR) is an organization that helps companies expand internationally by hiring and
-          paying
-          employees on behalf of another company.
-          EORs assume the responsibility for all formal employment tasks, including payroll processes and compliance
-          documentation.
-        </p>
-        <p>
-          Simply put, using an Employer of Record (EOR) allows companies to legally and efficiently employ workers in
-          other countries without having to set up a local entity or risk violating local employment laws.
-        </p>
+      <div class="flex flex-col items-center order-1 text-center lg:items-start lg:text-left lg:order-2 text-content">
+        <h3 class="container-title linegreen">What we do</h3>
+        <div class="flex flex-col gap-4">
+          <p>
+            An Employer of Record (EOR) is an organization that helps companies expand internationally by hiring and
+            paying
+            employees on behalf of another company.
+            EORs assume the responsibility for all formal employment tasks, including payroll processes and compliance
+            documentation.
+          </p>
+          <p>
+            Simply put, using an Employer of Record (EOR) allows companies to legally and efficiently employ workers in
+            other countries without having to set up a local entity or risk violating local employment laws.
+          </p>
+        </div>
       </div>
-    </x-two-cols-grid>
+    </div>
   </x-container>
 
   <country-pedia-section/>
 
-  <x-container class="my-10">
-    <x-two-cols-grid>
-      <div>
-        <div class="container-super-title linegreen">Hiring</div>
+  <x-container>
+    <div class="grid gap-10 py-10 text-center lg:py-16 place-items-center lg:grid-cols-2 lg:gap-16 md:text-left">
+      <div class="flex flex-col items-center lg:items-start">
+        <h3 class="container-super-title linegreen">Hiring</h3>
         <div class="container-title">Integrate Team<br/> Members Quickly</div>
         <p class="text-content">Expand your workforce with the very best talent from across the globe, and employ them
           almost anywhere.</p>
       </div>
       <img :src="HiringImage" alt="Hiring"/>
-    </x-two-cols-grid>
+    </div>
   </x-container>
 
-  <x-container class="my-10">
-    <x-two-cols-grid>
-      <div class="md:order-1">
-        <div class="container-super-title linegreen">Payroll</div>
+  <x-container>
+    <div class="grid gap-10 pb-10 text-center lg:pb-16 place-items-center lg:grid-cols-2 lg:gap-16 md:text-left">
+      <div class="flex flex-col items-center text-center md:order-1 lg:items-start lg:text-left">
+        <h3 class="container-super-title linegreen">Payroll</h3>
         <div class="container-title">International payroll made easy</div>
         <p class="text-content">
           Ensure full compliance across all your payrolls, with safety being a primary benefit of our streamlined,
@@ -69,13 +71,13 @@
         </x-button>
       </div>
       <img :src="PayrollImage" alt="Payroll">
-    </x-two-cols-grid>
+    </div>
   </x-container>
 
   <x-container class="my-10">
-    <x-two-cols-grid>
-      <div>
-        <div class="container-super-title linegreen">Benefits</div>
+    <div class="grid gap-10 pb-10 text-center lg:pb-16 place-items-center lg:grid-cols-2 lg:gap-16 md:text-left">
+      <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+        <h3 class="container-super-title linegreen">Benefits</h3>
         <div class="container-title">Keep your talent—and keep them happy</div>
         <p class="text-content">Get new employees on your payroll fast and in full compliance with our automated
           platform</p>
@@ -84,16 +86,18 @@
         </x-button>
       </div>
       <img :src="BenefitImage" alt="Benefit"/>
-    </x-two-cols-grid>
+    </div>
   </x-container>
 
-  <div class="py-10 bg-stone-50">
+  <div class="pt-10 bg-stone-50">
     <x-container>
-      <div class="container-super-title linegreen">Ready to get started?</div>
-      <div class="container-title max-w-[580px] pb-20">Say hello to a world without borders in three easy steps</div>
-      <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 ">
+      <div class="flex flex-col items-center pb-10 text-center lg:items-start md:pb-16 lg:pb-20 lg:text-left">
+        <h3 class="container-super-title linegreen">Ready to get started?</h3>
+        <p class="container-title max-w-[580px]">Say hello to a world without borders in three easy steps</p>
+      </div>
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 place-items-center">
         <div
-            class="flex flex-col items-center p-10 text-center bg-white rounded-2xl hover:shadow"
+            class="flex flex-col items-center max-w-md p-10 text-center bg-white rounded-2xl hover:shadow"
             v-for="(os,x) in getStarted" :key="x">
           <img class="h-16" :src="os.icon" :alt="os.title">
           <div class="py-3 text-lg font-semibold md:text-xl">{{ os.title }}</div>
@@ -129,7 +133,7 @@
 import XHeaderNavigation from "@/components/XHeaderNavigation.vue";
 import XButton from "@/components/XButton.vue";
 import XContainer from "@/components/XContainer.vue";
-import HeroSVG from "@/assets/homepage/hero.svg";
+import HeroSVG from "@/assets/homepage/hero-svg.svg";
 import OurPartners from "@/components/page-parts/OurPartners.vue";
 import XTwoColsGrid from "@/components/XTwoColsGrid.vue";
 import WhatWeDoImage from "@/assets/homepage/what-we-do.png";
