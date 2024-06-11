@@ -1,20 +1,18 @@
 <template>
-  <div class="pb-5 bg-secondary">
+  <div class="pb-20 bg-secondary">
     <x-header-navigation light/>
     <x-container>
       <x-two-cols-grid class="items-center text-white">
-        <div class="flex flex-col gap-6 md:gap-10">
+        <img :src="HeroSVG" alt="Fully connected workforce" class="md:order-1"/>
+        <div class="flex flex-col gap-6 md:gap-10 text-center md:text-left">
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug lg:leading-[80px]">
             The future is a fully connected <span class="text-accent">workforce</span>
           </h1>
           <p class="text-base md:text-xl lg:leading-9">Let us take the lead and assist you in building best teams worldwide - quickly and compliantly.</p>
-          <div class="flex flex-wrap gap-5">
+          <div class="flex flex-wrap gap-5 justify-center md:justify-start">
             <x-button color="secondary" outlined>Speak with sales</x-button>
             <x-button color="secondary">Start hiring</x-button>
           </div>
-        </div>
-        <div>
-          <img :src="HeroSVG" alt="Fully connected workforce"/>
         </div>
       </x-two-cols-grid>
     </x-container>
@@ -98,22 +96,21 @@
     </x-container>
   </div>
 
+<!--  <x-container>-->
+<!--    <div class="container-super-title linegreen">Our team</div>-->
+<!--    <div class="container-title">Meet our Brilliant Team</div>-->
 
-  <x-container>
-    <div class="container-super-title linegreen">Our team</div>
-    <div class="container-title">Meet our Brilliant Team</div>
-
-    <x-two-cols-grid>
-      <img :src="BrilliantTeam" alt=""/>
-      <div class="text-content">
-        <div class="mb-5 text-2xl font-semibold md:text-3xl">Tim Disbrey</div>
-        <div class="my-5 text-lg font-medium md:text-xl">Founder & CEO</div>
-        <p class="text-base leading-7 md:text-base lg:leading-8">Second time founder. 10+ years Special Forces officer. Operational and business experience
-          in over 40 countries. Three Master’s Degrees and a PhD. Speaks German and English.</p>
-        <x-button color="primary" outlined class="px-8 py-2 mt-5 md:px-16">See all</x-button>
-      </div>
-    </x-two-cols-grid>
-  </x-container>
+<!--    <x-two-cols-grid>-->
+<!--      <img :src="BrilliantTeam" alt=""/>-->
+<!--      <div class="text-content">-->
+<!--        <div class="mb-5 text-2xl font-semibold md:text-3xl">Tim Disbrey</div>-->
+<!--        <div class="my-5 text-lg font-medium md:text-xl">Founder & CEO</div>-->
+<!--        <p class="text-base leading-7 md:text-base lg:leading-8">Second time founder. 10+ years Special Forces officer. Operational and business experience-->
+<!--          in over 40 countries. Three Master’s Degrees and a PhD. Speaks German and English.</p>-->
+<!--        <x-button color="primary" outlined class="px-8 py-2 mt-5 md:px-16">See all</x-button>-->
+<!--      </div>-->
+<!--    </x-two-cols-grid>-->
+<!--  </x-container>-->
 
   <faqs-section/>
 

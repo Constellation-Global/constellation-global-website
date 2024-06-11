@@ -78,7 +78,17 @@ import XButton from "@/components/XButton.vue";
 import CheckMarkIcon from "@/components/icons/CheckMarkIcon.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import CountriesImage from "@/assets/countries.png";
+import {useHead} from "@vueuse/head";
 
+useHead({
+  title: 'Pricing - Constellation Global',
+  meta: [
+    {
+      name: 'og:title',
+      content: 'Pricing - Constellation Global',
+    }
+  ]
+})
 
 const pricing = [
   {

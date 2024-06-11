@@ -52,6 +52,17 @@ import XPageHeader from "@/components/XPageHeader.vue";
 import XContainer from "@/components/XContainer.vue";
 import CheckMarkIcon from "@/components/icons/CheckMarkIcon.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
+import {useHead} from "@vueuse/head";
+
+useHead({
+  title: 'Innovation - Constellation Global',
+  meta: [
+    {
+      name: 'og:title',
+      content: 'Innovation - Constellation Global',
+    }
+  ]
+})
 
 const solutions = [
   {

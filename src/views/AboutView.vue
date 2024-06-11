@@ -63,6 +63,17 @@ import OurTeam from "@/components/page-parts/OurTeam.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import CheckMarkIcon from "@/components/icons/CheckMarkIcon.vue";
 import OurJourney from "@/assets/our-journey.png";
+import {useHead} from "@vueuse/head";
+
+useHead({
+  title: 'About Us - Constellation Global',
+  meta: [
+    {
+      name: 'og:title',
+      content: 'About Us - Constellation Global',
+    }
+  ]
+})
 
 const coreBeliefs = [
   {

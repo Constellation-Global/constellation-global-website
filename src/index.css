@@ -33,3 +33,15 @@ body {
 .text-content {
     @apply text-base leading-7 md:text-lg lg:leading-10
 }
+
+.form-input {
+    @apply input form-control border border-gray-200 focus:outline-none;
+}
+
+.form-textarea {
+    @apply textarea form-control border border-gray-200 focus:outline-none;
+}
+
+.input-label {
+    @apply text-sm pb-3 block;
+}

@@ -26,5 +26,16 @@ import XPageHeader from "@/components/XPageHeader.vue";
 import XContainer from "@/components/XContainer.vue";
 import CaseStudiesComingSoon from "@/assets/case-studies-coming-soon.png";
 import XButton from "@/components/XButton.vue";
+import {useHead} from "@vueuse/head";
+
+useHead({
+  title: 'Use cases - Constellation Global',
+  meta: [
+    {
+      name: 'og:title',
+      content: 'Use cases - Constellation Global',
+    }
+  ]
+})
 
 </script>

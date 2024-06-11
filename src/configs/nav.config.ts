@@ -4,6 +4,6 @@ export const navConfig = [
   { label: 'Innovation', href: '/innovation' },
   { label: 'Use cases', href: '/use-cases' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Resources', href: '/resources' },
+  // { label: 'Resources', href: '/resources' },
   { label: 'Support', href: '/support' }
 ]
