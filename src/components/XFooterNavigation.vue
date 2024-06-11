@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap py-6 max-w-[1200px] mx-auto px-6 gap-5 items-center" :class="light?'text-white':''">
+  <div class="flex flex-wrap py-10 md:py-16 max-w-[1200px] mx-auto px-6 gap-5 items-center" :class="light?'text-white':''">
     <div class="flex items-center justify-center flex-1 py-5 md:block">
       <router-link to="/">
         <logo-dark v-if="light"/>

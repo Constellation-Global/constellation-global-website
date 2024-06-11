@@ -1,8 +1,10 @@
 <template>
   <div class="py-10 bg-stone-50">
     <x-container>
-      <div class="container-super-title">FAQ</div>
-      <div class="container-title">Frequently asked questions</div>
+      <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+        <h3 class="container-super-title linegreen">FAQ</h3>
+        <p class="container-title">Frequently asked questions</p>
+      </div>
 
       <div class="grid gap-5 py-10 md:grid-cols-2 text-content">
         <div class="flex flex-col gap-5">

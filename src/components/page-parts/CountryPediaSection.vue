@@ -1,7 +1,7 @@
 <template>
-  <div class="py-10 bg-[url(assets/cpedia-bg.png)] bg-no-repeat bg-cover bg-center bg-secondary relative overflow-hidden">
+  <div class="py-10 lg:py-16 bg-[url(assets/cpedia-bg.png)] bg-no-repeat bg-cover bg-center bg-secondary relative overflow-hidden">
     <x-white-patch-background class="opacity-5"/>
-    <x-container class="flex flex-col items-center gap-16 md:flex-row">
+    <x-container class="flex flex-col items-center gap-16 text-center md:text-left md:flex-row">
       <img :src="CountryPediaSVG" alt="Country Pedia" class="h-64 mx-auto md:h-60"/>
       <div class="flex flex-col justify-between flex-1">
         <div class="flex flex-col gap-5 mb-10">

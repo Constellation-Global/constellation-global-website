@@ -2,7 +2,7 @@
   <x-page-header title="Innovation"/>
 
   <x-container>
-    <div class="py-10">
+    <div class="flex flex-col items-center py-10 text-center md:text-left md:items-start">
       <div class="container-super-title text-linegreen">Faced with</div>
       <div class="container-title">The Problem</div>
       <p class="text-content">Don’t have the capacity to employ workers overseas because of your company’s location? Confused by dealing with
@@ -14,6 +14,7 @@
 
 
   <x-container>
+    <div class="flex flex-col items-center text-center md:text-left md:items-start">
       <div class="container-super-title text-linegreen">We provide</div>
       <div class="container-title">The Solution</div>
       <p class="text-content">
@@ -23,22 +24,25 @@
         easier, and you can rest safe in the knowledge that you’re engaging the best talent for your business – and that
         you’re protected from risk.
       </p>
+    </div>
   </x-container>
 
   <x-container>
     <div class="py-10">
-      <div class="container-super-title text-linegreen">Solution breakdown</div>
-      <div class="container-title">Viable steps to providing solution</div>
+      <div class="flex flex-col items-center py-10 text-center md:text-left md:items-start">
+        <h3 class="container-super-title text-linegreen">Solution breakdown</h3>
+        <h4 class="container-title">Viable steps to providing solution</h4>
+      </div>
   
       <div class="grid gap-10 py-10 lg:grid-cols-3 md:grid-cols-2 grid-col-1">
-        <div v-for="(cb, x) in solutions" :key="x">
-          <div class="flex items-center mb-5 gap-x-5">
+        <div v-for="(cb, x) in solutions" :key="x" class="p-5 border rounded-md md:border-none">
+          <div class="flex flex-col items-center gap-4 mb-5 text-center md:flex-row md:text-left gap-x-5">
             <div class="h-10 w-10 rounded-full bg-[#F1F7FF] flex items-center justify-center text-primary">
               <check-mark-icon/>
             </div>
             <div class="text-lg font-semibold md:text-xl">{{ cb.title }}</div>
           </div>
-          <div class="text-content">{{ cb.content }}</div>
+          <div class="text-center text-content md:text-left">{{ cb.content }}</div>
         </div>
       </div>
     </div>

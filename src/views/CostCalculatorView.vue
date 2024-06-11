@@ -2,8 +2,9 @@
   <div class="pb-5 bg-secondary">
     <x-header-navigation light/>
     <x-container>
-      <x-two-cols-grid class="items-center text-white">
-        <div class="flex flex-col gap-10">
+      <x-two-cols-grid class="text-white lg:min-h-[80vh] pb-10 lg:pb-0">
+        <img :src="CountriesImage" alt="Cost Calculator Countries"  class="lg:order-1 max-w-[75%] mb-6" />
+        <div class="flex flex-col items-center text-center gap-7 lg:items-start lg:text-start lg:gap-10">
           <div class="flex flex-col gap-2">
             <div class="text-content">Cost calculator</div>
             <div class="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug lg:leading-[70px]">
@@ -19,26 +20,26 @@
             </x-button>
           </div>
         </div>
-        <div>
-          <img :src="CountriesImage" alt="Cost Calculator Countries"/>
-        </div>
+     
       </x-two-cols-grid>
     </x-container>
   </div>
 
   <x-container>
-    <div class="pt-5 md:pt-8 container-super-title text-linegreen">Pricing</div>
-    <div class="container-title">Our Price</div>
-    <p class="text-content">Discover our wide range of pricing options suitable for you. Whether you want to hire a
-      contractor in the UK,
-      twenty employees in Brazil or run payroll in thirteen different countries where you own entities. You can do it
-      all with Constellation global.</p>
+    <div class="flex flex-col items-center text-center md:text-left md:items-start">
+      <h4 class="pt-5 md:pt-8 container-super-title text-linegreen">Pricing</h4>
+      <h3 class="container-title">Our Price</h3>
+      <p class="text-content">Discover our wide range of pricing options suitable for you. Whether you want to hire a
+        contractor in the UK,
+        twenty employees in Brazil or run payroll in thirteen different countries where you own entities. You can do it
+        all with Constellation global.</p>
+    </div>
 
     <div class="flex flex-col py-20 gap-14">
       <div v-for="(p,x) in pricing" :key="x"
            class="shadow-md rounded-xl grid md:grid-cols-2 grid-cols-1 overflow-hidden max-w-[900px] border mx-auto">
-        <div class="flex flex-col gap-3 p-10 bg-white md:w-[85%]">
-          <div class="flex items-center gap-3">
+        <div class="flex flex-col gap-3 p-10 bg-white md:w-[85%] text-center md:text-left">
+          <div class="flex flex-col items-center gap-3 md:items-start md:flex-row">
             <div class="h-14 w-14 rounded-xl bg-[#ECEBFF] flex items-center justify-center">
               <div class="h-10 w-10 rounded-full bg-gradient-to-r from-50% from-primary to-white to-0%"></div>
             </div>
@@ -58,7 +59,7 @@
         </div>
         <div class="bg-[#F7F7FC] p-10 flex items-center">
           <div class="text-sm">
-            <div class="pb-3 font-bold">What's included</div>
+            <div class="pb-3 font-bold text-center md:text-left">What's included</div>
             <div v-for="(f,y) in p.features" :key="`${y}-${x}`"
                  class="flex items-center gap-4 py-1 text-sm font-medium">
               <div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary">
