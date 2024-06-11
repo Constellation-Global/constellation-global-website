@@ -16,11 +16,11 @@
         </a>
       </div>
     </div>
-    <form>
+    <form id="contact-form">
       <div class="grid md:grid-cols-2 gap-x-5 gap-y-8 py-10">
         <div>
           <label class="input-label" for="firstName">First name</label>
-          <input id="firstName" class="form-input w-full" placeholder="enter first-name" name="firstName" required/>
+          <input id="firstName" class="form-input w-full" placeholder="Enter first name" name="firstName" required/>
         </div>
         <div>
           <label class="input-label" for="lastName">Last name</label>
@@ -33,7 +33,7 @@
         </div>
         <div>
           <label class="input-label" for="businessPhone">Business phone</label>
-          <input id="businessPhone" class="form-input w-full" placeholder="Enter phone no" name="businessPhone"
+          <input id="businessPhone" class="form-input w-full" placeholder="Enter business phone" name="businessPhone"
                  required/>
         </div>
         <div>
@@ -48,7 +48,7 @@
           <label class="input-label">Message</label>
           <textarea class="w-full form-textarea" rows="5" name="message" placeholder="Enter your message"></textarea>
         </div>
-        <div class="col-span-2 my-5 flex justify-center">
+        <div class="col-span-2 my-3 flex justify-center">
           <x-button color="primary" class="rounded-3xl w-1/2">Get started</x-button>
         </div>
       </div>

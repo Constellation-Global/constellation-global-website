@@ -42,7 +42,7 @@ const colorCss = computed(() => {
 
     case 'accent':
       return props.outlined
-          ? 'border-white hover:border-white text-white hover:text-accent bg-accent hover:bg-white'
+          ? 'border-white hover:border-accent text-white hover:text-accent bg-accent hover:bg-white'
           : 'bg-white hover:bg-accent hover:border-white text-accent hover:text-white';
 
     case 'neutral':

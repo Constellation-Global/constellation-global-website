@@ -43,5 +43,6 @@ body {
 }
 
 .input-label {
-    @apply text-sm pb-3 block;
+    @apply pb-2 block;
+    font-size: 16px;
 }

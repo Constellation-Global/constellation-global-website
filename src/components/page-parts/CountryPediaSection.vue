@@ -9,14 +9,13 @@
           <div class="max-w-[460px] font-semibold text-white text-xl md:text-2xl">Hiring Globally? Check out our CountryPedia.</div>
         </div>
         <div>
-          <x-button class="rounded-full px-14">Visit Country-Pedia</x-button>
+          <x-button class="rounded-full px-14" href="/country-pedia">Visit Country-Pedia</x-button>
         </div>
       </div>
     </x-container>
   </div>
 </template>
 <script setup lang="ts">
-// import CountryPediaSVG from "@/assets/country-pedia.png";
 import CountryPediaSVG from "@/assets/homepage/country-pedia.svg";
 import XButton from "@/components/XButton.vue";
 import XContainer from "@/components/XContainer.vue";

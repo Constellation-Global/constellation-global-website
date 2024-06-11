@@ -10,10 +10,13 @@
               Hire and pay in <span class="text-accent">102+</span> countries
             </div>
           </div>
-          <div class="text-base md:text-xl lg:leading-9">Let us take the wheel and help manage everything related to paying your global workforce.</div>
+          <div class="text-base md:text-xl lg:leading-9">Let us take the wheel and help manage everything related to
+            paying your global workforce.
+          </div>
           <div class="flex flex-wrap gap-5">
-            <x-button color="secondary" outlined>Select country</x-button>
-            <x-button color="secondary">Start Now</x-button>
+            <x-button color="secondary" external :href="appConfig.registerLink" target="_blank">
+              Start Now
+            </x-button>
           </div>
         </div>
         <div>
@@ -26,7 +29,8 @@
   <x-container>
     <div class="pt-5 md:pt-8 container-super-title text-linegreen">Pricing</div>
     <div class="container-title">Our Price</div>
-    <p class="text-content">Discover our wide range of pricing options suitable for you. Whether you want to hire a contractor in the UK,
+    <p class="text-content">Discover our wide range of pricing options suitable for you. Whether you want to hire a
+      contractor in the UK,
       twenty employees in Brazil or run payroll in thirteen different countries where you own entities. You can do it
       all with Constellation global.</p>
 
@@ -55,11 +59,12 @@
         <div class="bg-[#F7F7FC] p-10 flex items-center">
           <div class="text-sm">
             <div class="pb-3 font-bold">What's included</div>
-            <div v-for="(f,y) in p.features" :key="`${y}-${x}`" class="flex items-center gap-4 py-1 text-sm font-medium">
+            <div v-for="(f,y) in p.features" :key="`${y}-${x}`"
+                 class="flex items-center gap-4 py-1 text-sm font-medium">
               <div class="flex items-center justify-center w-6 h-6 rounded-full bg-primary">
                 <check-mark-icon class="w-4 h-4 text-white"/>
               </div>
-              {{f}}
+              {{ f }}
             </div>
           </div>
         </div>
@@ -79,6 +84,7 @@ import CheckMarkIcon from "@/components/icons/CheckMarkIcon.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import CountriesImage from "@/assets/countries.png";
 import {useHead} from "@vueuse/head";
+import {appConfig} from "@/configs/app.config";
 
 useHead({
   title: 'Pricing - Constellation Global',
@@ -98,7 +104,7 @@ const pricing = [
     price: '99',
     frequency: 'monthly',
     features: ['All analytics features', 'Up to 250,000 tracked visits', 'Normal support', 'Up to 3 team members'],
-    href: 'https://app.constellation-global.com/'
+    href: appConfig.registerLink
   },
   {
     level: 'Pro',
@@ -107,7 +113,7 @@ const pricing = [
     price: '99',
     frequency: 'monthly',
     features: ['All analytics features', 'Up to 250,000 tracked visits', 'Normal support', 'Up to 3 team members'],
-    href: 'https://app.constellation-global.com/'
+    href: appConfig.registerLink
   }
 ];
 </script>
