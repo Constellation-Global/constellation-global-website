@@ -1,8 +1,8 @@
 <template>
   <x-page-header />
 
-  <x-container class="grid grid-cols-1 gap-10 md:grid-cols-2">
-    <div class="bg-[#F8FBFF] bg-opacity-50 rounded-2xl text-lg px-10 pb-10 md:py-16 flex flex-col items-center md:items-start md:text-left text-center justify-center">
+  <x-container class="grid grid-cols-1 gap-10 md:flex">
+    <div class="bg-[#F8FBFF] flex-[2_2_0px] bg-opacity-50 rounded-2xl text-lg px-10 pb-10 md:py-16 flex flex-col items-center md:items-start md:text-left text-center justify-center">
       <div class="flex flex-col gap-6">
         <component :is="TwistedArrowIcon" class="text-[#BCB9DE]"/>
         <h2 class="py-3 text-3xl font-bold">Let's talk</h2>
@@ -27,40 +27,40 @@
         <!-- <component :is="Social1Svg" class="text-[#BCB9DE]"/> -->
       </div>
     </div>
-    <form id="contact-form">
+    <form id="contact-form" class="flex-[3_3_0]" @submit="handleSubmit">
       <div class="grid gap-4 py-10 md:grid-cols-2 gap-x-5 gap-y-6 md:gap-y-8">
         <div>
           <label class="font-medium input-label text-ash" for="firstName">First name</label>
-          <input id="firstName" class="w-full form-input" placeholder="Enter first name" name="firstName" required/>
+          <input v-model="support.firstName" id="firstName" class="w-full form-input" placeholder="Enter first name" name="firstName" required/>
         </div>
         <div>
           <label class="font-medium input-label text-ash" for="lastName">Last name</label>
-          <input id="lastName" class="w-full form-input" placeholder="Enter last name" name="lastName" required/>
+          <input v-model="support.lastName" id="lastName" class="w-full form-input" placeholder="Enter last name" name="lastName" required/>
         </div>
         <div>
           <label class="font-medium input-label text-ash" for="businessEmail">Business email</label>
-          <input id="businessEmail" class="w-full form-input" placeholder="Enter email address" name="businessEmail"
+          <input v-model="support.email" id="businessEmail" class="w-full form-input" placeholder="Enter email address" name="businessEmail"
                  required type="email"/>
         </div>
         <div>
           <label class="font-medium input-label text-ash" for="businessPhone">Business phone</label>
-          <input id="businessPhone" class="w-full form-input" placeholder="Enter business phone" name="businessPhone"
+          <input v-model="support.phone" id="businessPhone" class="w-full form-input" placeholder="Enter business phone" name="businessPhone"
                  required/>
         </div>
         <div>
           <label class="font-medium input-label text-ash" for="country">Country</label>
-          <input id="country" class="w-full form-input" placeholder="Select country" name="country"/>
+          <input v-model="support.country" id="country" class="w-full form-input" placeholder="Select country" name="country"/>
         </div>
         <div>
-          <label class="font-medium input-label text-ash" for="countrySize">Country size</label>
-          <input id="countrySize" class="w-full form-input" placeholder="Select company size" name="companySize"/>
+          <label class="font-medium input-label text-ash" for="countrySize">Company size</label>
+          <input v-model="support.companySize" id="countrySize" class="w-full form-input" placeholder="Select company size" name="companySize"/>
         </div>
         <div class="md:col-span-2">
           <label class="font-medium input-label text-ash">Message</label>
-          <textarea class="w-full form-textarea" rows="5" name="message" placeholder="Enter your message"></textarea>
+          <textarea v-model="support.message" class="w-full form-textarea" rows="5" name="message" placeholder="Enter your message"></textarea>
         </div>
         <div class="flex justify-center my-3 md:col-span-2">
-          <x-button color="primary" class="w-1/2 rounded-3xl">Get started</x-button>
+          <x-button type="submit" color="primary" class="w-1/2 rounded-3xl">Get started</x-button>
         </div>
       </div>
     </form>
@@ -77,6 +77,11 @@ import XButton from "@/components/XButton.vue";
 import Social1Svg from "@/assets/social1.svg";
 import Social2Svg from "@/assets/social2.svg";
 import Social3Svg from "@/assets/social3.svg";
+import { ref } from 'vue'
+import type  { SupportInterface } from "@/interfaces"
+import {appConfig} from "@/configs/app.config";
+
+
 
 useHead({
   title: 'Contact Us - Constellation Global',
@@ -100,4 +105,41 @@ const contacts = [
     href: 'https://www.linkedin.com/company/constellation-global/'
   }
 ];
+
+const loading = ref(false)
+
+const initialState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    country: '',
+    companySize: '',
+    message: ''
+  }
+
+  const support = ref<SupportInterface>({ ...initialState })
+
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const result = await fetch(`${appConfig.baseUrl}prospects`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(support.value)
+      })
+      const data = await result.json()
+
+      support.value = { ...initialState }
+      alert("Your form was submitted succefully")
+
+      
+    } catch (error: any) {
+      alert(error?.message || "An error occured")
+    }
+  }
+
+
 </script>
