@@ -20,11 +20,10 @@
           <div>{{ contact.label }}</div>
         </a>
       </div>
-      <div class="flex items-center gap-3 mt-32 md:gap-6">
-        <img :src="Social1Svg" alt="Social" class="" />
+      <div class="flex items-center gap-3 mt-10 md:mt-32 md:gap-6">
+        <!-- <img :src="Social1Svg" alt="Social" class="" />
         <img :src="Social2Svg" alt="Social" class="" />
-        <img :src="Social3Svg" alt="Social" class="" />
-        <!-- <component :is="Social1Svg" class="text-[#BCB9DE]"/> -->
+        <img :src="Social3Svg" alt="Social" class="" /> -->
       </div>
     </div>
     <form id="contact-form" class="flex-[3_3_0]" @submit="handleSubmit">
