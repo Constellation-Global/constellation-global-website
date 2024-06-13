@@ -8,6 +8,8 @@ import CostCalculatorView from "@/views/CostCalculatorView.vue";
 import NotFound from "@/views/NotFound.vue";
 import SupportView from "@/views/SupportView.vue";
 import CountryPediaView from "@/views/CountryPediaView.vue";
+import TermsView from "@/views/TermsView.vue";
+import PrivacyView from "@/views/PrivacyView.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -60,6 +62,14 @@ const router = createRouter({
                 {
                     path: 'country-pedia',
                     component: CountryPediaView,
+                },
+                {
+                    path: 'privacy',
+                    component: PrivacyView,
+                },
+                {
+                    path: 'terms',
+                    component: TermsView,
                 },
                 { 
                     path: '/:pathMatch(.*)*', 
