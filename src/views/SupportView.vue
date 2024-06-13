@@ -133,7 +133,8 @@ const initialState = {
       const result = await fetch(`${appConfig.baseUrl}prospects`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
         },
         body: JSON.stringify(support.value)
       })
