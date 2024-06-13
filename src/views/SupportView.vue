@@ -60,7 +60,7 @@
           <textarea v-model="support.message" class="w-full form-textarea" rows="5" name="message" placeholder="Enter your message"></textarea>
         </div>
         <div class="flex justify-center my-3 md:col-span-2">
-          <x-button type="submit" color="primary" class="w-1/2 rounded-3xl">Get started</x-button>
+          <x-button type="submit" color="primary" :class="['w-1/2 rounded-3xl', loading && 'animate-pulse']">{{ loading ? "Submitting ..." : 'Get started'}}</x-button>
         </div>
       </div>
     </form>
@@ -80,6 +80,7 @@ import Social3Svg from "@/assets/social3.svg";
 import { ref } from 'vue'
 import type  { SupportInterface } from "@/interfaces"
 import {appConfig} from "@/configs/app.config";
+import {useToast} from 'vue-toast-notification';
 
 
 
@@ -92,6 +93,10 @@ useHead({
     }
   ]
 })
+
+const $toast = useToast({
+  position: "top-right"
+});
 
 const contacts = [
   {
@@ -123,6 +128,9 @@ const initialState = {
   const handleSubmit = async (event: Event) => {
     try {
       event.preventDefault();
+
+      loading.value = true
+
       const result = await fetch(`${appConfig.baseUrl}prospects`, {
         method: "POST",
         headers: {
@@ -133,11 +141,12 @@ const initialState = {
       const data = await result.json()
 
       support.value = { ...initialState }
-      alert("Your form was submitted succefully")
-
+      $toast.success("Your form was submitted succefully");
+      loading.value = false
       
     } catch (error: any) {
-      alert(error?.message || "An error occured")
+      loading.value = false
+      $toast.error(error?.message || "An error occured")
     }
   }
 

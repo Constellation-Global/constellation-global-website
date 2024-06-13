@@ -6,6 +6,11 @@ import router from './router'
 import {createHead} from '@vueuse/head'
 import VueGtag from "vue-gtag";
 
+import ToastPlugin from 'vue-toast-notification';
+// Import one of the available themes
+//import 'vue-toast-notification/dist/theme-default.css';
+import 'vue-toast-notification/dist/theme-bootstrap.css';
+
 const app = createApp(App)
 const head = createHead()
 app.use(head)
@@ -15,5 +20,7 @@ app.use(head)
 app.use(VueGtag, {
     config: { id: "G-VY5WXDCX4K" }
 });
+
+app.use(ToastPlugin);
 
 app.mount('#app')
