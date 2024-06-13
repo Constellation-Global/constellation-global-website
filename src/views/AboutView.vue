@@ -51,7 +51,7 @@
     </div>
   </x-container>
 
-  <our-team/>
+<!--  <our-team/>-->
 
   <build-team-overseas/>
 </template>
@@ -59,7 +59,6 @@
 import XPageHeader from "@/components/XPageHeader.vue";
 import XContainer from "@/components/XContainer.vue";
 import XTwoColsGrid from "@/components/XTwoColsGrid.vue";
-import OurTeam from "@/components/page-parts/OurTeam.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import CheckMarkIcon from "@/components/icons/CheckMarkIcon.vue";
 import OurJourney from "@/assets/our-journey.png";
