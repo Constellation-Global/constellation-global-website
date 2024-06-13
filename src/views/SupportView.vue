@@ -120,7 +120,7 @@ const initialState = {
 
   const support = ref<SupportInterface>({ ...initialState })
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: Event) => {
     try {
       event.preventDefault();
       const result = await fetch(`${appConfig.baseUrl}prospects`, {
