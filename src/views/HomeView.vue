@@ -19,7 +19,7 @@
     </x-container>
   </div>
 
-  <our-partners />
+<!--  <our-partners />-->
 
   <x-container>
     <div class="grid gap-10 py-10 text-center lg:py-16 place-items-center lg:grid-cols-2 lg:gap-16 md:text-left">
@@ -134,7 +134,7 @@ import XHeaderNavigation from "@/components/XHeaderNavigation.vue";
 import XButton from "@/components/XButton.vue";
 import XContainer from "@/components/XContainer.vue";
 import HeroSVG from "@/assets/homepage/hero-svg.svg";
-import OurPartners from "@/components/page-parts/OurPartners.vue";
+// import OurPartners from "@/components/page-parts/OurPartners.vue";
 import XTwoColsGrid from "@/components/XTwoColsGrid.vue";
 import WhatWeDoImage from "@/assets/homepage/what-we-do.png";
 import PayrollImage from "@/assets/homepage/payroll.png";
