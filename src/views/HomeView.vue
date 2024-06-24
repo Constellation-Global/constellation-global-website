@@ -3,7 +3,7 @@
     <x-header-navigation light/>
     <x-container>
       <x-two-cols-grid class="text-white lg:min-h-[70vh]">
-        <img :src="HeroSVG" alt="Fully connected workforce" class="lg:order-1 lg:min-w-[85%]" />
+        <img :src="HeroSVG" alt="Fully connected workforce" class="lg:order-1 lg:min-w-[85%]"/>
         <div class="flex flex-col items-center max-w-lg text-center lg:items-start gap-7 md:gap-10 lg:text-left">
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-snug lg:leading-[80px]">
             The future is a fully connected <span class="text-accent">workforce</span>
@@ -19,7 +19,7 @@
     </x-container>
   </div>
 
-<!--  <our-partners />-->
+  <!--  <our-partners />-->
 
   <x-container>
     <div class="grid gap-10 py-10 text-center lg:py-16 place-items-center lg:grid-cols-2 lg:gap-16 md:text-left">
@@ -28,15 +28,16 @@
         <h3 class="container-title linegreen">What we do</h3>
         <div class="flex flex-col gap-4">
           <p>
-            An Employer of Record (EOR) is an organization that helps companies expand internationally by hiring and
-            paying
-            employees on behalf of another company.
-            EORs assume the responsibility for all formal employment tasks, including payroll processes and compliance
-            documentation.
+            We help companies of any size and location access a global talent pool for their permanent and temporary
+            workforce by engaging them on your behalf – and we do it all while eliminating risk, cutting costs and
+            saving you time with our global platform, so you can focus on your business. Say goodbye to only employing
+            workers in your home country, dealing with confusing local labour laws, HR responsibilities and other
+            time-consuming employment admin.
           </p>
           <p>
-            Simply put, using an Employer of Record (EOR) allows companies to legally and efficiently employ workers in
-            other countries without having to set up a local entity or risk violating local employment laws.
+            At Constellation Global, finding quality staff and employing them anywhere has never been easier, and you
+            can rest safe in the knowledge that you’re engaging the best talent for your business – and that you’re
+            protected from risk.
           </p>
         </div>
       </div>
@@ -50,8 +51,8 @@
       <div class="flex flex-col items-center lg:items-start">
         <h3 class="container-super-title linegreen">Hiring</h3>
         <div class="container-title">Integrate Team<br/> Members Quickly</div>
-        <p class="text-content">Expand your workforce with the very best talent from across the globe, and employ them
-          almost anywhere.</p>
+        <p class="text-content">Don’t have the capacity to employ workers overseas because of your company’s location? Constellation Global can employ a permanent workforce for you in practically any country in the world, and help you access the very best candidates in your field, – all while ensuring local compliance and without any administrative responsibilities to worry about.</p>
+        <p class="text-content">You can calculate the costs, add benefits and onboard employees within few clicks, - it’s never been easier to manage everything!</p>
       </div>
       <img :src="HiringImage" alt="Hiring"/>
     </div>
@@ -62,10 +63,7 @@
       <div class="flex flex-col items-center text-center md:order-1 lg:items-start lg:text-left">
         <h3 class="container-super-title linegreen">Payroll</h3>
         <div class="container-title">International payroll made easy</div>
-        <p class="text-content">
-          Ensure full compliance across all your payrolls, with safety being a primary benefit of our streamlined,
-          encrypted portal.
-        </p>
+        <p class="text-content">Ensure full compliance across your multi-country payrolls, with accuracy and safety being primary benefits of our streamlined, encrypted solution. Wherever your employees are in the world, you’ll have a quick view of your entire payroll process, benefiting you and your workers. Free up time for employees and reduce costs for your business with reliable, automated and easily accessible data flows.</p>
         <x-button color="accent" outlined class="mt-6" external target="_blank" :href="appConfig.registerLink">
           Start now
         </x-button>
@@ -78,9 +76,8 @@
     <div class="grid gap-10 pb-10 text-center lg:pb-16 place-items-center lg:grid-cols-2 lg:gap-16 md:text-left">
       <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
         <h3 class="container-super-title linegreen">Benefits</h3>
-        <div class="container-title">Keep your talent—and keep them happy</div>
-        <p class="text-content">Get new employees on your payroll fast and in full compliance with our automated
-          platform</p>
+        <div class="container-title">Keep your talents — and keep them happy</div>
+        <p class="text-content">Struggling to attain top talents? Enhance your employee package with local benefits, - whether it is Private Medical Insurance, gym card or private pension plan, Constellation Global offers a variety of options regardless of worker’s location.</p>
         <x-button color="accent" outlined class="mt-6" external target="_blank" :href="appConfig.registerLink">
           Start now
         </x-button>
