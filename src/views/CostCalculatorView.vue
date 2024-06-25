@@ -36,15 +36,13 @@
       <div v-for="(p,x) in pricing" :key="x"
            class="shadow-md rounded-xl grid md:grid-cols-2 grid-cols-1 overflow-hidden max-w-[900px] border mx-auto">
         <div class="flex flex-col gap-3 p-10 bg-white w-[400px] text-center md:text-left">
-          <div class="flex flex-col items-center gap-3 md:items-start md:flex-row">
+          <div class="flex flex-col items-center gap-3 md:flex-row">
             <div>
               <div class="h-14 w-14 rounded-xl bg-[#ECEBFF] flex items-center justify-center">
                 <div class="h-10 w-10 rounded-full bg-gradient-to-r from-50% from-primary to-white to-0%"></div>
               </div>
             </div>
-            <div>
-              <div class="font-bold leading-snug">{{ p.type }}</div>
-            </div>
+            <div class="font-bold leading-snug">{{ p.type }}</div>
           </div>
           <div class="mb-1 text-sm">{{ p.summary }}</div>
           <div v-if="p.pricingModel==='priced'">

@@ -13,13 +13,15 @@
         </p>
       </div>
       <div class="flex flex-col gap-5 mt-16">
-        <a target="_blank" :href="contact.href" class="text-left rounded-lg hover:bg-gray-200 py-2 px-3"
+        <a :href="contact.href" class="text-left rounded-lg hover:bg-gray-200 py-2 px-3"
            v-for="(contact, x) in contacts" :key="x">
-          <div class="flex items-center gap-3">
-            <component :is="contact.icon"/>
-            <div class="font-semibold">{{ contact.label }}</div>
+          <div class="flex gap-3">
+            <component :is="contact.icon" class="text-primary"/>
+            <div>
+              <div :class="contact.subtitle?'underline':''">{{ contact.label }}</div>
+              <div class="text-sm font-light" v-if="contact.subtitle">({{ contact.subtitle }})</div>
+            </div>
           </div>
-          <div class="">{{ contact.subtitle }}</div>
         </a>
       </div>
       <div class="flex items-center gap-3 mt-10 md:mt-32 md:gap-6">
@@ -87,6 +89,8 @@ import {ref} from 'vue'
 import type {SupportInterface} from "@/interfaces"
 import {appConfig} from "@/configs/app.config";
 import {useToast} from 'vue-toast-notification';
+import LocationIcon from "@/components/icons/LocationIcon.vue";
+import LinkedInIcon from "@/components/icons/LinkedInIcon.vue";
 
 
 useHead({
@@ -103,7 +107,7 @@ const $toast = useToast({
   position: "top-right"
 });
 
-const contacts = [
+const contacts: { icon: any; label: string; subtitle?: string; href?: string }[] = [
   {
     icon: EnvelopIcon,
     label: 'sales@constellation-global.com',
@@ -115,6 +119,16 @@ const contacts = [
     label: 'partnerships@constellation-global.com',
     subtitle: 'For partnership inquiries',
     href: 'mailto:partnerships@constellation-global.com'
+  },
+  {
+    icon: LocationIcon,
+    label: 'London, UK',
+    href: '#',
+  },
+  {
+    icon: LinkedInIcon,
+    label: 'constellation-global',
+    href: 'https://www.linkedin.com/company/constellation-global/'
   }
 ];
 
@@ -149,12 +163,12 @@ const handleSubmit = async (event: Event) => {
     const data = await result.json()
 
     support.value = {...initialState}
-    $toast.success("Your form was submitted succefully");
+    $toast.success("Your form was submitted successfully");
     loading.value = false
 
   } catch (error: any) {
     loading.value = false
-    $toast.error(error?.message || "An error occured")
+    $toast.error(error?.message || "An error occurred")
   }
 }
 
