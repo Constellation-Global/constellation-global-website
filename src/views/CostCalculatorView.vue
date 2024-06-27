@@ -74,6 +74,8 @@
   </x-container>
 
   <build-team-overseas/>
+  <!-- <CostCalculator :showModal="showModal" :closeModal="closeModal"  /> -->
+  <!-- <button @click="openModal">Open Modal</button> -->
 
 </template>
 <script setup lang="ts">
@@ -86,6 +88,10 @@ import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import CountriesImage from "@/assets/countries.png";
 import {useHead} from "@vueuse/head";
 import {appConfig} from "@/configs/app.config";
+import { useFetch } from "@/composables/useFetch";
+import { apiGetCountries } from "@/services";
+import CostCalculator from "@/components/CostCalculator.vue";
+import { onMounted, ref } from "vue";
 
 useHead({
   title: 'Pricing - Constellation Global',
@@ -96,6 +102,30 @@ useHead({
     }
   ]
 })
+
+const showModal = ref(false)
+
+const closeModal = () => {
+  showModal.value = false
+}
+
+const openModal = () => {
+  showModal.value = true
+}
+
+const { fetchData, data, error, loading } = useFetch({
+  api: apiGetCountries
+})
+
+console.log({ valu: data?.value })
+
+onMounted(() => {
+  fetchData()
+})
+setTimeout(() => {
+  
+  console.log({ valu: data?.value })
+}, 3000)
 
 const pricing = [
   {
