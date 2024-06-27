@@ -1,7 +1,7 @@
 <template>
   <x-page-header/>
 
-  <x-container class="grid grid-cols-1 gap-10 md:flex">
+  <x-container class="grid grid-cols-1 gap-10 md:flex md:items-center">
     <div
         class="bg-[#F8FBFF] flex-[2_2_0px] bg-opacity-50 rounded-2xl text-lg px-10 pb-10 md:py-16 flex flex-col items-center md:items-start md:text-left text-center justify-center">
       <div class="flex flex-col gap-6">
