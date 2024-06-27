@@ -139,7 +139,6 @@ import XHeaderNavigation from "@/components/XHeaderNavigation.vue";
 import XButton from "@/components/XButton.vue";
 import XContainer from "@/components/XContainer.vue";
 import HeroSVG from "@/assets/homepage/hero1.svg";
-// import OurPartners from "@/components/page-parts/OurPartners.vue";
 import XTwoColsGrid from "@/components/XTwoColsGrid.vue";
 import WhatWeDoImage from "@/assets/homepage/what-we-do.png";
 import PayrollImage from "@/assets/homepage/payroll.png";
