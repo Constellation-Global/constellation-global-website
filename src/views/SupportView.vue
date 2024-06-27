@@ -1,23 +1,27 @@
 <template>
-  <x-page-header />
+  <x-page-header/>
 
   <x-container class="grid grid-cols-1 gap-10 md:flex">
-    <div class="bg-[#F8FBFF] flex-[2_2_0px] bg-opacity-50 rounded-2xl text-lg px-10 pb-10 md:py-16 flex flex-col items-center md:items-start md:text-left text-center justify-center">
+    <div
+        class="bg-[#F8FBFF] flex-[2_2_0px] bg-opacity-50 rounded-2xl text-lg px-10 pb-10 md:py-16 flex flex-col items-center md:items-start md:text-left text-center justify-center">
       <div class="flex flex-col gap-6">
         <component :is="TwistedArrowIcon" class="text-[#BCB9DE]"/>
-        <h2 class="py-3 text-3xl font-bold">Let's talk</h2>
+        <h2 class="py-3 text-3xl font-bold">Get in touch</h2>
         <p class="">
-          Have some big idea or brand to develop and need help? Then reach out we'd love to hear about your project and
-          provide help
+          Fill in the form and our team will be in touch with you shortly. A question, a quote, a partnership offer -
+          we’d love to hear from you!
         </p>
       </div>
       <div class="flex flex-col gap-5 mt-16">
-        <a target="_blank" :href="contact.href" class="flex items-center gap-3 text-left rounded-lg hover:bg-gray-200"
+        <a :href="contact.href" class="px-3 py-2 text-left rounded-lg hover:bg-gray-200"
            v-for="(contact, x) in contacts" :key="x">
-           <div>
-             <component :is="contact.icon" class="w-10"/>
-           </div>
-          <div>{{ contact.label }}</div>
+          <div class="flex gap-3">
+            <component :is="contact.icon" class="text-primary"/>
+            <div>
+              <div :class="contact.subtitle?'underline':''">{{ contact.label }}</div>
+              <div class="text-sm font-light" v-if="contact.subtitle">({{ contact.subtitle }})</div>
+            </div>
+          </div>
         </a>
       </div>
       <div class="flex items-center gap-3 mt-10 md:mt-32 md:gap-6">
@@ -47,7 +51,8 @@
         </div>
         <!-- <div>
           <label class="font-medium input-label text-ash" for="businessPhone">Business phone</label>
-          <input v-model="support.phone" id="businessPhone" class="w-full form-input" placeholder="Enter business phone" name="businessPhone"
+          <input v-model="support.phone" id="businessPhone" class="w-full form-input" placeholder="Enter business phone"
+                 name="businessPhone"
                  required/>
         </div> -->
         <!-- <div>
@@ -60,7 +65,8 @@
         </div> -->
         <div class="">
           <label class="font-medium input-label text-ash">Message</label>
-          <textarea v-model="support.message" class="w-full form-textarea" rows="5" name="message" placeholder="Enter your message"></textarea>
+          <textarea v-model="support.message" class="w-full form-textarea" rows="5" name="message"
+                    placeholder="Enter your message"></textarea>
         </div>
         <div class="flex justify-center my-3">
           <x-button type="submit" color="primary" :class="['w-1/2 rounded-3xl', loading && 'animate-pulse']">{{ loading ? "Submitting ..." : 'Get started'}}</x-button>
@@ -75,18 +81,15 @@ import XContainer from "@/components/XContainer.vue";
 import TwistedArrowIcon from "@/components/icons/TwistedArrowIcon.vue"
 import {useHead} from "@vueuse/head";
 import EnvelopIcon from "@/components/icons/EnvelopIcon.vue";
-import LinkedInIcon from "@/components/icons/LinkedInIcon.vue";
 import XButton from "@/components/XButton.vue";
-import Social1Svg from "@/assets/social1.svg";
-import Social2Svg from "@/assets/social2.svg";
-import Social3Svg from "@/assets/social3.svg";
-import { ref } from 'vue'
-import type  { SupportInterface } from "@/interfaces"
+import {ref} from 'vue'
+import type {SupportInterface} from "@/interfaces"
 import {appConfig} from "@/configs/app.config";
 import {useToast} from 'vue-toast-notification';
 import { useFetch } from "@/composables/useFetch";
 import { apiSubmitSupport } from "@/services/index";
-
+import LocationIcon from "@/components/icons/LocationIcon.vue";
+import LinkedInIcon from "@/components/icons/LinkedInIcon.vue";
 
 
 useHead({
@@ -103,11 +106,23 @@ const $toast = useToast({
   position: "top-right"
 });
 
-const contacts = [
+const contacts: { icon: any; label: string; subtitle?: string; href?: string }[] = [
   {
     icon: EnvelopIcon,
     label: 'sales@constellation-global.com',
+    subtitle: 'For new business inquiries',
     href: 'mailto:sales@constellation-global.com'
+  },
+  {
+    icon: EnvelopIcon,
+    label: 'partnerships@constellation-global.com',
+    subtitle: 'For partnership inquiries',
+    href: 'mailto:partnerships@constellation-global.com'
+  },
+  {
+    icon: LocationIcon,
+    label: 'London, UK',
+    href: '#',
   },
   {
     icon: LinkedInIcon,
@@ -251,6 +266,7 @@ const initialState = {
       loading.value = false
     }
   }
+
 
 
 </script>
