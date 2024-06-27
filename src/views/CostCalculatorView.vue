@@ -79,6 +79,8 @@
   </x-container>
 
   <build-team-overseas/>
+  <!-- <CostCalculator :showModal="showModal" :closeModal="closeModal"  /> -->
+  <!-- <button @click="openModal">Open Modal</button> -->
 
 </template>
 <script setup lang="ts">
@@ -91,6 +93,10 @@ import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import CountriesImage from "@/assets/countries.png";
 import {useHead} from "@vueuse/head";
 import {appConfig} from "@/configs/app.config";
+import { useFetch } from "@/composables/useFetch";
+import { apiGetCountries } from "@/services";
+import CostCalculator from "@/components/CostCalculator.vue";
+import { onMounted, ref } from "vue";
 
 useHead({
   title: 'Pricing - Constellation Global',
@@ -102,37 +108,13 @@ useHead({
   ]
 })
 
-const pricing: {
-  type: string;
-  summary: string;
-  price: string;
-  pricingModel: 'priced' | 'quote' | 'free';
-  frequency: string;
-  features: string[];
-  href: string;
-  btnText?: string;
-}[] = [
+
+const pricing = [
   {
-    type: 'Contractor Management Service',
-    summary: 'Onboard and manage contractors compliantly across the world.',
-    price: '200',
-    pricingModel: 'priced',
-    frequency: 'monthly',
-    features: [
-      'Contractor misclassification assessment',
-      'Compliance check',
-      'B2B contract',
-      'Automated invoices',
-      'Self-billing',
-      'Support'
-    ],
-    href: appConfig.registerLink
-  },
-  {
-    type: 'Employer of Record',
-    summary: 'Grow your team globally.',
-    price: '350',
-    pricingModel: 'priced',
+    level: 'Pro',
+    type: 'Contractors',
+    summary: 'Show social proof notifications to increase leads and sales.',
+    price: '99',
     frequency: 'monthly',
     features: [
       'Onboarding in 48 hours',
