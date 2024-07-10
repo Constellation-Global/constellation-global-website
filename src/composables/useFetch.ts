@@ -11,12 +11,13 @@ interface FetchDataComposable<T> {
   
 
 interface IProps<T> {
-    api: (a?: any, b?: any) => Promise<AxiosResponse<T, any>>
-    param?: any
+    api: (a?: any, b?: any) => Promise<AxiosResponse<T, any>>;
+    param?: any;
+    run?: boolean;
 }
 
 
-export const useFetch = <T,>({ api, param }: IProps<T>): FetchDataComposable<T> => {
+export const useFetch = <T,>({ api, param, run }: IProps<T>): FetchDataComposable<T> => {
     const data = ref<any>(null);
 
     const error = ref<string | null>(null);
@@ -25,20 +26,7 @@ export const useFetch = <T,>({ api, param }: IProps<T>): FetchDataComposable<T> 
     const fetchData = async() => {
         error.value = null;
         loading.value = true;
-        
-        // const payload = body ? {
-        //     method: "POST",
-        //     headers: {
-        //     "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(body)
-        // } :  {
-        //     method: "GET",
-        //     headers: {
-        //         "authorization": `Bearer ${auth.token}`
-        //     }
-        // };
-
+      
         try {
             const response = await api(param);
             const val = response.data as any
@@ -64,6 +52,10 @@ export const useFetch = <T,>({ api, param }: IProps<T>): FetchDataComposable<T> 
             } finally {
               loading.value = false;
             }
+    }
+
+    if (run) {
+      fetchData()
     }
     return { data, error, loading, fetchData }
 }
