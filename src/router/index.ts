@@ -8,6 +8,7 @@ import CostCalculatorView from "@/views/CostCalculatorView.vue";
 import NotFound from "@/views/NotFound.vue";
 import SupportView from "@/views/SupportView.vue";
 import CountryPediaView from "@/views/CountryPediaView.vue";
+import CountryView from "@/views/Countries.vue";
 import TermsView from "@/views/TermsView.vue";
 import PrivacyView from "@/views/PrivacyView.vue";
 
@@ -70,6 +71,10 @@ const router = createRouter({
                 {
                     path: 'terms',
                     component: TermsView,
+                },
+                {
+                    path: 'countries',
+                    component: CountryView,
                 },
                 { 
                     path: '/:pathMatch(.*)*', 
