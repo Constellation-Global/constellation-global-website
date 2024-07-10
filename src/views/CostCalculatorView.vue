@@ -13,16 +13,13 @@
           </div>
           <div class="text-base md:text-xl lg:leading-9">Let us take the wheel and help manage everything related to paying your global workforce.</div>
           <div class="flex flex-wrap gap-5">
-            <select v-model="country" name="" id="" class='p-2 py-1 text-sm text-white bg-transparent border border-white rounded-md max-w-40'>
+            <select v-model="country" name="" id="" class='p-2 py-1 text-sm text-white bg-transparent border border-white rounded-md outline-none max-w-40'>
               <option class="bg-secondary" value="">Select Country</option>
               <option class="bg-secondary"v-for="country in countries" :value="country?.name">{{ country?.name }}</option>
             </select>
             <x-button color="secondary" target="_blank" @click="handleStart">
               Start Now
             </x-button>
-            <!-- <x-button color="secondary" external :href="appConfig.registerLink" target="_blank">
-              Start Now
-            </x-button> -->
           </div>
         </div>
 
@@ -102,10 +99,10 @@ import {useHead} from "@vueuse/head";
 import {appConfig} from "@/configs/app.config";
 import CostCalculator from "@/components/CostCalculator.vue";
 import { useFetch } from "@/composables/useFetch";
-import { apiGetCountries } from "@/services";
 import { onMounted, ref } from "vue";
 import { useToast } from "vue-toast-notification";
 import type {CountryInterface} from "@/interfaces"
+import { apiGetCountries } from "@/services";
 
 useHead({
   title: 'Pricing - Constellation Global',
@@ -144,7 +141,7 @@ const handleStart = () => {
 const updateSelectedType = (newType: 'Contractor' | 'Employee') => {
   selectedType.value = newType
 }
-console.log({ selectedType: selectedType.value })
+// console.log({ selectedType: selectedType.value })
 
 const pricing = [
   {
