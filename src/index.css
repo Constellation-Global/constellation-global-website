@@ -68,6 +68,13 @@ body {
     @apply mb-2.5 md:mb-4 text-xl md:text-2xl;
 }
 
+.container-sub-title {
+    @apply mb-2.5 md:mb-4 text-lg md:text-xl;
+}
+.list-check {
+    @apply before:content-[''] before:w-4 before:bg-center before:rounded-full before:-bottom-0.5 before:h-4 before:bg-[url(assets/list-check.svg)] before:relative before:mr-2 before:inline-block;
+}
+
 .text-content {
     @apply text-base leading-7 md:text-lg lg:leading-10
 }
