@@ -147,17 +147,38 @@
       </p>
     </section>
   </x-container>
+  <x-container>
+    <section className="mb-10">
+      <h2 class="font-semibold container-super-title">Employment Cost Calculator</h2>
+      <div class="flex flex-wrap gap-5">
+        <select v-model="country" name="" id="" class='p-2 py-1 text-sm bg-white border rounded-md outline-none text-primary border-primary max-w-40'>
+          <option class="bg-white" value="">Select Country</option>
+          <option class="bg-white"v-for="country in countries" :value="country?.name">{{ country?.name }}</option>
+        </select>
+        <x-button color="primary" target="_blank" @click="handleStart">
+          Start Now
+        </x-button>
+      </div>
+    </section>
+  </x-container>
 
   <build-team-overseas/>
 
 </template>
 <script setup lang="ts">
+import { ref } from "vue";
+import { useToast } from "vue-toast-notification";
 import XHeaderNavigation from "@/components/XHeaderNavigation.vue";
 import XDarkBackground from "@/components/XDarkBackground.vue";
 import XContainer from "@/components/XContainer.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import {useHead} from "@vueuse/head";
 import FlagImg from "@/assets/flags.svg"
+import XButton from "@/components/XButton.vue";
+import { useFetch } from "@/composables/useFetch";
+import type {CountryInterface} from "@/interfaces"
+import { apiGetCountries } from "@/services";
+
 
 useHead({
   title: 'CountryPedia - Constellation Global',
@@ -168,6 +189,30 @@ useHead({
     }
   ]
 })
+
+
+const $toast = useToast({
+  position: "top-right"
+});
+
+const {data: countries} = useFetch<CountryInterface[]>({
+    api: apiGetCountries,
+    run: true,
+});
+
+
+const showCostModal = ref(false)
+const country = ref('')
+
+const handleStart = () => {
+  if (!country.value) {
+    return $toast.info('Select a country')
+  }
+  if (country.value) {
+    return $toast.info('Cost Calculator Coming soon')
+  }
+  showCostModal.value = true
+}
 
 const overview = [
   {
