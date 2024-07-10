@@ -12,9 +12,47 @@ body {
     color: #344563;
 }
 
-/* p {
-    @apply py-4;
-} */
+*::-moz-scrollbar {
+    scrollbar-width: thin;  /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer */
+    display: none;  /* Firefox */
+}
+
+::-moz-scrollbar {
+    scrollbar-width: thin;  /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer */
+    display: none;  /* Firefox */
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    /* background-color: rgba(128, 128, 128, 0.342); */
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, 0.342);
+    border-radius: 5px;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(179, 178, 178);
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F8F8F8; 
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background-color: #F8F8F8; 
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    visibility: hidden;
+}
 
 .linegreen::after {
     @apply w-16 h-1 mx-auto mt-2 rounded-full lg:mx-0 md:w-20 bg-linegreen;
