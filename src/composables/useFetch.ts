@@ -6,7 +6,7 @@ interface FetchDataComposable<T> {
     data: Ref<UnwrapRef<T> | null>;
     error: Ref<string | null>;
     loading: Ref<boolean>;
-    fetchData: () => Promise<void>;
+    fetchData: (a?: any) => Promise<void>;
   }
   
 
@@ -23,12 +23,12 @@ export const useFetch = <T,>({ api, param, run }: IProps<T>): FetchDataComposabl
     const error = ref<string | null>(null);
     const loading = ref(false);
 
-    const fetchData = async() => {
+    const fetchData = async(newParam?: any) => {
         error.value = null;
         loading.value = true;
       
         try {
-            const response = await api(param);
+            const response = await api(newParam ? newParam : param);
             const val = response.data as any
             
             if (response.status >= 200 && response.status < 300) {
@@ -37,7 +37,7 @@ export const useFetch = <T,>({ api, param, run }: IProps<T>): FetchDataComposabl
                 throw new Error("An Error Occured")
             }
         } catch (err: any) {
-            console.log("caught", err)
+            // console.log("caught", err)
             if (err.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
