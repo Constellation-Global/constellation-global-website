@@ -24,7 +24,7 @@
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-8 overflow-x-auto text-sm no-scrollbar max-w-2xl">
         <div v-for="item in overview" class="flex-1 flex flex-col px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
           <span class="text-[#344563] font-semibold">
-            {{ countryData?.overview?.[item.name] || 'null' }}
+            {{ countryData?.overview?.[item.name] || 'N/A' }}
           </span>
           <span class="text-[9px]">
             {{ item.label }}
