@@ -16,10 +16,10 @@
   <x-container>
     <section className="rounded-md md:bg-white py-10">
       <div className="flex gap-3 overflow-x-auto text-sm no-scrollbar text-center">
-        <div class="px-4 py-3 rounded-md flex-1 cursor-pointer whitespace-nowrap bg-[#8399E9] text-white">
-          Top Countries
+        <div v-for="filter in filters" :class="['px-4 py-3 rounded-md flex-1 cursor-pointer whitespace-nowrap', filter.name === zone && 'bg-[#8399E9] text-white']"  @click="() => zone = filter.name">
+          {{ filter.name }}
         </div>
-        <div class="flex-1 px-4 py-3 bg-gray-100 rounded-md cursor-pointer whitespace-nowrap">
+        <!-- <div class="flex-1 px-4 py-3 bg-gray-100 rounded-md cursor-pointer whitespace-nowrap">
           All
         </div>
         <div class="flex-1 px-4 py-3 bg-gray-100 rounded-md cursor-pointer whitespace-nowrap">
@@ -36,17 +36,19 @@
         </div>
         <div class="flex-1 px-4 py-3 bg-gray-100 rounded-md cursor-pointer whitespace-nowrap">
           North America
-        </div>
+        </div> -->
       </div>
     </section>
   </x-container>
- 
-  <x-container>
+  
+  <x-container v-if="zone && !!countriesByZone?.length">
     <section className="rounded-md md:bg-white md:p-10 p-6 border border-[#606B7D1A] rounded-md mb-3">
-      <h2 class="font-semibold container-super-title">Top Countries</h2>
+      <h2 class="font-semibold container-super-title">{{ zone }}</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5 lg:gap-8 overflow-x-auto text-sm no-scrollbar text-center">
-        <div v-for="value in [0,1,2,3,4,5,6,7,8,9,10,11]" class="flex-1 px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
-          {{ countryList[value]?.name }}
+        <div v-for="country in countriesByZone" class="flex-1 px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
+          <router-link :to="`/country-pedia/${country?._id}`">
+              {{ country?.name }}
+          </router-link>
         </div>
       </div>
     </section>
@@ -56,21 +58,37 @@
       <h2 class="font-semibold container-super-title">Country List</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5 lg:gap-8 overflow-x-auto text-sm no-scrollbar text-center">
         <div v-for="country in countryList" class="flex-1 px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
-          {{ country.name }}
+          <router-link :to="`/country-pedia/${country?._id}`">
+              {{ country?.name }}
+          </router-link>
         </div>
       </div>
     </section>
   </x-container>
 
   <build-team-overseas/>
+  <loading 
+    v-model:active="countriesByZoneLoading"
+    :can-cancel="false"
+    :on-cancel="() => ''"
+    :is-full-page="true"
+    color="#506FF4"
+  />
 
 </template>
-<script setup lang="ts">
+<script setup lang="ts">``
 import XHeaderNavigation from "@/components/XHeaderNavigation.vue";
 import XDarkBackground from "@/components/XDarkBackground.vue";
 import XContainer from "@/components/XContainer.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import {useHead} from "@vueuse/head";
+import { useFetch } from "@/composables/useFetch";
+import type { GlobalInterface } from "@/interfaces"
+import { apiGetGlobals, apiGetGlobalsByZone } from "@/services";
+import { ref, onBeforeMount, watch } from "vue";
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
+
 
 useHead({
   title: 'CountryPedia - Constellation Global',
@@ -82,79 +100,62 @@ useHead({
   ]
 })
 
-const countryList = [
+const zone = ref<string>('Top Countries')
+
+
+
+const { data: countryList, fetchData: fetchGlobals } = useFetch<GlobalInterface[]>({
+    api: apiGetGlobals,
+    // run: true,
+    param: {}
+});
+
+const { data: countriesByZone, fetchData: fetchCGlobalsByZone, loading: countriesByZoneLoading } = useFetch<GlobalInterface[]>({
+    api: apiGetGlobalsByZone,
+    run: true,
+    param: {
+      zone: zone.value,
+    },
+});
+
+// console.log({ countriesByZone: countriesByZone })
+// console.log({ countryList: countryList })
+
+watch(zone, async () => {
+  fetchCGlobalsByZone({ zone: zone.value });
+})
+
+
+
+onBeforeMount(async () => {
+  await fetchGlobals();
+});
+
+const filters = [
   {
-    name: 'Afghanistan',
-    content: ''
+    name: 'Top Countries',
   },
   {
-    name: 'Albania',
-    content: ''
+    name: 'All',
   },
   {
-    name: 'Algeria',
-    content: ''
+    name: 'Africa',
   },
   {
-    name: 'Angola',
-    content: ''
+    name: 'Asia',
   },
   {
-    name: 'Argentina',
-    content: ''
+    name: 'Middle East',
   },
   {
-    name: 'Armenia',
-    content: ''
+    name: 'South America',
   },
   {
     name: 'Aruba',
-    content: ''
   },
   {
-    name: 'Australia',
-    content: ''
+    name: 'North America',
   },
-  {
-    name: 'Austria',
-    content: ''
-  },
-  {
-    name: 'Azerbaijan',
-    content: ''
-  },
-  {
-    name: 'Bahamas',
-    content: ''
-  },
-  {
-    name: 'Bahrain',
-    content: ''
-  },
-  {
-    name: 'Bangladesh',
-    content: ''
-  },
-  {
-    name: 'Barbados',
-    content: ''
-  },
-  {
-    name: 'Belarus',
-    content: ''
-  },
-  {
-    name: 'Belgium',
-    content: ''
-  },
-  {
-    name: 'Belize',
-    content: ''
-  },
-  {
-    name: 'Benin',
-    content: ''
-  },
-];
+]
 
 </script>
