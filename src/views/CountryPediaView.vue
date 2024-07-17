@@ -45,11 +45,9 @@
     <section className="rounded-md md:bg-white md:p-10 p-6 border border-[#606B7D1A] rounded-md mb-3">
       <h2 class="font-semibold container-super-title">{{ zone }}</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5 lg:gap-8 overflow-x-auto text-sm no-scrollbar text-center">
-        <div v-for="country in countriesByZone" class="flex-1 px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
-          <router-link :to="`/country-pedia/${country?._id}`">
-              {{ country?.name }}
-          </router-link>
-        </div>
+        <router-link :to="`/country-pedia/${country?._id}`" v-for="country in countriesByZone" class="flex-1 px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
+          {{ country?.name }}
+        </router-link>
       </div>
     </section>
   </x-container>
@@ -57,11 +55,9 @@
     <section className="rounded-md md:bg-white md:p-10 p-6 border border-[#606B7D1A] rounded-md mb-12">
       <h2 class="font-semibold container-super-title">Country List</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5 lg:gap-8 overflow-x-auto text-sm no-scrollbar text-center">
-        <div v-for="country in countryList" class="flex-1 px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
-          <router-link :to="`/country-pedia/${country?._id}`">
-              {{ country?.name }}
-          </router-link>
-        </div>
+        <router-link :to="`/country-pedia/${country?._id}`" v-for="country in countryList" class="flex-1 px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
+          {{ country?.name }}
+        </router-link>
       </div>
     </section>
   </x-container>
