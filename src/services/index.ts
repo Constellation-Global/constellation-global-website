@@ -38,6 +38,17 @@ export const apiGetGlobalsByZone = ({ zone }: {
     return BaseService.get(`/countrypedia/zone/${zone}`);
 }
 
+export const apiSearchGlobals = ({ filters }: {
+    filters: { [key: string]: any },
+}) => {
+    const config = {
+        params: {
+            filters: JSON.stringify(filters),
+        },
+    }
+    return BaseService.get(`/countrypedia/all`, config);
+}
+
 export const apiGetGlobal = ({ id }: {
     id: string
 }) => {
