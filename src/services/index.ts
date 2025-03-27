@@ -24,19 +24,6 @@ export const apiGetGlobals = async ({filters, page, limit}: GlobalRequestInterfa
     return (await BaseService.get(`/countrypedia/all`, config)).data;
 }
 
-export const apiGetGlobalsByZone = async ({zone}: { zone: string }): Promise<GlobalInterface[]> => {
-    return (await BaseService.get(`/countrypedia/zone/${zone}`)).data;
-}
-
-export const apiSearchGlobals = async ({filters}: GlobalRequestInterface): Promise<GlobalInterface[]> => {
-    const config = {
-        params: {
-            filters: JSON.stringify(filters),
-        },
-    }
-    return (await BaseService.get(`/countrypedia/all`, config)).data;
-}
-
 export const apiGetGlobal = async ({id}: { id: string }): Promise<GlobalInterface> => {
     return (await BaseService.get(`/countrypedia/${id}`)).data;
 }
