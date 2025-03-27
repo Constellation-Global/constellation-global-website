@@ -153,7 +153,7 @@
     </Teleport>
 </template>
 <script setup lang="ts">
-    import { Teleport, Transition, onBeforeUnmount, ref, watch } from 'vue';
+    import { onBeforeUnmount, ref, watch } from 'vue';
     import EmployeeImg from "@/assets/employee.svg";
     import ContractImg from "@/assets/contract.svg";
     import type { SupportInterface } from '@/interfaces';
