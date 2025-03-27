@@ -51,8 +51,6 @@
     </div>
   </x-container>
 
-<!--  <our-team/>-->
-
   <build-team-overseas/>
 </template>
 <script setup lang="ts">

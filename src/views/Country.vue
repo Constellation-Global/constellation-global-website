@@ -43,8 +43,9 @@
             <div class="modal-action absolute -top-4 right-2">
               <form method="dialog">
                 <button class="btn btn-circle btn-sm font-light bg-primary text-white text-xl">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                       stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
                   </svg>
                 </button>
               </form>
@@ -79,13 +80,13 @@
           <p>contribution: ${{ countryData?.tax?.employer?.contribution }}</p>
           <p>contribution1: ${{ countryData?.tax?.employer?.contribution1 }}</p>
         </div>
-        <ul class="grid items-center justify-between max-w-5xl gap-4 text-xs md:grid-cols-2 md:text-base">
+        <div class="grid items-center justify-between max-w-5xl gap-4 text-xs md:grid-cols-2 md:text-base">
           <div class="flex flex-col gap-2 text-sm" v-for="value in countryData?.tax?.employer?.array">
             <span class="text-xs">Upper Band: <span class="font-semibold">${{ value.upperBand }}</span></span>
             <span class="text-xs">Lower Band: <span class="font-semibold">${{ value.lowerBand }}</span></span>
             <span class="text-xs">Description: <span>{{ value.info }}</span></span>
           </div>
-        </ul>
+        </div>
       </div>
       <div v-if="countryData?.tax?.employee" class='mt-4'>
         <p class="mb-2 text-sm leading-snug md:text-lg md:mb-2">
@@ -132,29 +133,14 @@
               <p>contribution: ${{ countryData?.tax?.employee?.employeePayrollTax?.contribution }}</p>
               <p>contribution1: ${{ countryData?.tax?.employee?.employeePayrollTax?.contribution1 }}</p>
             </div>
-            <ul class="grid items-center justify-between max-w-5xl gap-4 text-xs md:grid-cols-2 md:text-base">
+            <div class="grid items-center justify-between max-w-5xl gap-4 text-xs md:grid-cols-2 md:text-base">
               <div class="flex flex-col gap-2 text-sm"
                    v-for="value in countryData?.tax?.employee?.employeePayrollTax.array">
                 <span class="text-xs">Upper Band: <span class="font-semibold">${{ value.upperBand }}</span></span>
                 <span class="text-xs">Lower Band: <span class="font-semibold">${{ value.lowerBand }}</span></span>
                 <span class="text-xs">Description: <span>{{ value.info }}</span></span>
               </div>
-              <!-- <li class="text-sm list-check" v-for="value in countryData?.tax?.employer?.array">
-                <span>Upper Band: {{ value.upperBand }}</span>
-                <span>Lower Band: {{ value.lowerBand }}</span>
-                <span>Info: {{ value.info }}</span>
-                {{ value.info }} - {{ value.info }} - {{ value.info }}
-              </li> -->
-              <!-- <li class="text-sm list-check">Health insurance: 1.8%</li>
-              <li class="text-sm list-check">Social security: 15%</li>
-              <li class="text-sm list-check">Health insurance: 1.8% </li> -->
-            </ul>
-            <!-- <p class="flex flex-col mt-6 text-sm font-semibold md:text-base">
-              VAT - {{ countryData?.tax?.VAT }}%
-            </p>
-            <p class="flex flex-col text-sm font-semibold md:text-base">
-              Average Payroll Tax - {{ countryData?.tax?.avgPayrollTax }}%
-            </p> -->
+            </div>
           </div>
 
         </div>
@@ -290,7 +276,7 @@
 
 </template>
 <script setup lang="ts">
-import {ref, onBeforeMount, onMounted} from "vue";
+import {ref, onBeforeMount} from "vue";
 import {useToast} from "vue-toast-notification";
 import XHeaderNavigation from "@/components/XHeaderNavigation.vue";
 import XDarkBackground from "@/components/XDarkBackground.vue";
@@ -298,10 +284,9 @@ import XContainer from "@/components/XContainer.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import Loader from "@/components/Loader.vue";
 import {useHead} from "@vueuse/head";
-import CFlagImg from "@/assets/flags.svg"
 import FlagImg from "@/assets/flag.png"
 import XButton from "@/components/XButton.vue";
-import type {GlobalInterface, GlobalOverviewInterface, GlobalOverview} from "@/interfaces"
+import type {GlobalOverview} from "@/interfaces"
 import {useRoute} from 'vue-router'
 import {useCountriesWithMobileCodes} from "@/hooks/useCountriesWithMobileCodes";
 import {useGetGlobal} from "@/hooks/useGlobal";

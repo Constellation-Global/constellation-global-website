@@ -46,7 +46,7 @@ const faqs = [
   {
     title: 'What services does the Employer of Record provide?',
     content: 'Drafting, issuing and maintaining locally compliant employment contract,\n' +
-        'Payroll management and taxwithholding,\n' +
+        'Payroll management and tax withholding,\n' +
         'Timely payment,\n' +
         'Benefits management,\n' +
         'Local compliance'

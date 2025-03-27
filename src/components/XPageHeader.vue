@@ -11,7 +11,5 @@
 import XHeaderNavigation from "@/components/XHeaderNavigation.vue";
 import XWhitePatchBackground from "@/components/XWhitePatchBackground.vue";
 
-defineProps<{
-  title?: string;
-}>()
+defineProps<{ title?: string; }>()
 </script>
