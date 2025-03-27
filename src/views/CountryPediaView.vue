@@ -27,38 +27,18 @@
       </div>
     </section>
   </x-container>
-  <x-container v-if="name && !!countrySearchResult?.length">
-    <section class="md:bg-white md:p-10 p-6 border border-[#606B7D1A] rounded-md mb-3">
-      <h2 class="font-semibold container-super-title">Search Term: {{ name }}</h2>
-      <div
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5 lg:gap-8 overflow-x-auto text-sm no-scrollbar text-center">
-        <router-link :to="`/country-pedia/${country?._id}`" v-for="country in countrySearchResult"
-                     class="flex-1 px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
-          {{ country?.name }}
-        </router-link>
-      </div>
-    </section>
-  </x-container>
 
-  <x-container v-if="zone && !!countriesByZone?.length">
-    <section class="md:bg-white md:p-10 p-6 border border-[#606B7D1A] rounded-md mb-3">
-      <h2 class="font-semibold container-super-title">{{ zone }}</h2>
-      <div
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5 lg:gap-8 overflow-x-auto text-sm no-scrollbar text-center">
-        <router-link :to="`/country-pedia/${country?._id}`" v-for="country in countriesByZone"
-                     class="flex-1 px-4 py-3 border border-[#606B7D1A] rounded-md cursor-pointer whitespace-nowrap">
-          {{ country?.name }}
-        </router-link>
-      </div>
-    </section>
-  </x-container>
   <x-container>
     <section class="md:bg-white md:p-10 p-6 border border-[#606B7D1A] rounded-md mb-12">
-      <h2 class="font-semibold container-super-title font-inter">Country List</h2>
+      <h2 class="font-semibold container-super-title font-inter">
+        <span v-if="name">Search Term: {{ name }}</span>
+        <span v-else>Country List</span>
+      </h2>
       <div
           class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5 lg:gap-6 overflow-x-auto text-sm no-scrollbar text-center">
 
-        <router-link :to="`/country-pedia/${country?._id}`" v-for="country in countryList"
+        <router-link :to="`/country-pedia/${country?._id}`"
+                     v-for="country in filteredCountries"
                      class="flex justify-center items-center flex-1 hover:bg-gray-100 px-1 py-3 border border-[#606B7D1A] rounded-md cursor-pointer">
           <div>
             {{ country?.name }}
@@ -70,23 +50,20 @@
 
   <build-team-overseas/>
   <loading
-      v-model:active="countriesByZoneLoading"
-      :can-cancel="false"
-      :on-cancel="() => ''"
-      :is-full-page="true"
-      color="#506FF4"
+      v-model:active="isLoading" :can-cancel="false"
+      :on-cancel="() => ''" :is-full-page="true" color="#506FF4"
   />
 
 </template>
 <script setup lang="ts">
-import {useGetGlobals, useGetGlobalsByZone, useSearchGlobals} from "@/hooks/useGlobal";
+import {useGetGlobals} from "@/hooks/useGlobal";
 
 import XHeaderNavigation from "@/components/XHeaderNavigation.vue";
 import XDarkBackground from "@/components/XDarkBackground.vue";
 import XContainer from "@/components/XContainer.vue";
 import BuildTeamOverseas from "@/components/page-parts/BuildTeamOverseas.vue";
 import {useHead} from "@vueuse/head";
-import {ref, onBeforeMount} from "vue";
+import {computed, onBeforeMount, ref} from "vue";
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 
@@ -100,14 +77,11 @@ useHead({
   ]
 })
 
-const zone = ref<string>('Top Countries')
+const zone = ref<string>('All')
 
-const name = ref<string>('')
+const name = ref<string>('');
 
-const {data: countryList, refetch: fetchGlobals} = useGetGlobals({});
-const {data: countriesByZone, isLoading: countriesByZoneLoading} = useGetGlobalsByZone(zone.value);
-const {data: countrySearchResult} = useSearchGlobals({filters: {name: name.value}});
-console.log({countrySearchResult, countryList, countriesByZone})
+const {data: countryList, refetch: fetchGlobals, isLoading} = useGetGlobals({});
 
 onBeforeMount(async () => {
   await fetchGlobals();
@@ -139,5 +113,19 @@ const filters = [
     name: 'North America',
   },
 ]
+
+const filteredCountries = computed(() => {
+  if (!countryList.value) return [];
+
+  return countryList.value.filter((country) => {
+    const currentZone = country?.overview?.zone?.toLowerCase() || "";
+    const currentCountry = country?.name?.toLowerCase() || "";
+    const searchZone = zone.value ? zone.value.toLowerCase() : "";
+    const searchCountry = name.value ? name.value.toLowerCase() : "";
+
+    return currentCountry.includes(searchCountry) &&
+        (currentZone === "" || currentZone == "all" || (currentZone !== "top countries" && currentZone.includes(searchZone)));
+  });
+});
 
 </script>
