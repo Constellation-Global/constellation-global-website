@@ -3,15 +3,16 @@
     <x-dark-background/>
     <x-header-navigation light/>
     <div class="text-center text-white flex flex-col items-center justify-center flex-1 pb-[58px] relative z-10">
-      <h1 class="mb-2 text-4xl font-bold md:text-5xl">
+      <h1 class="mb-2 text-4xl font-medium md:text-5xl font-inter">
         {{ countryData?.name }}
       </h1>
-      <p class="text-sm">No recent country update</p>
-      <img :src="countryData?.overview?.flag || FlagImg" alt="" class='w-full max-w-[10rem] max-h-20 mt-10'/>
+
+      <img :src="countryData?.overview?.flag || countryFlag(countryData?.overview?.code) ||  FlagImg" alt=""
+           class='w-full max-w-[10rem] max-h-20 mt-10 border border-white'/>
     </div>
   </div>
   <x-container>
-    <section class="pt-10 mt-32">
+    <section class="pt-10 mt-16 md:mt-32">
       <h2 class="font-semibold container-super-title">About {{ countryData?.name }}</h2>
       <p class="text-base leading-snug md:text-lg">
         {{ countryData?.overview?.about }}
@@ -22,15 +23,34 @@
     <section class="mb-5">
       <h2 class="font-semibold container-sub-title">Overview</h2>
       <div
-          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-8 overflow-x-auto text-sm no-scrollbar max-w-5xl">
-        <div v-for="item in overview" class="opacity-70 px-4 py-3 border border-[#34456350] rounded-md cursor-pointer flex flex-col justify-center">
-          <div class="text-[#344563] font-semibold text-xl line-clamp-2">
+          class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-8 overflow-x-auto text-sm no-scrollbar max-w-5xl">
+        <div @click="handleExtraDetailsModal(item.label, countryData?.overview?.[item.name])" v-for="item in overview"
+             class="opacity-70 px-4 py-3 border border-[#34456350] rounded-xl cursor-pointer flex flex-col justify-center">
+          <div class="text-[#344563] font-semibold text-lg line-clamp-2">
             {{ countryData?.overview?.[item.name] || 'N/A' }}
           </div>
-          <span class="text-xs">
+          <span class="text-xs capitalize">
             {{ item.label }}
           </span>
         </div>
+        <!-- Place dialog here -->
+        <dialog class="modal" ref="modalRef">
+          <div class="modal-box relative">
+            <div>
+              <h3 class="text-center font-semibold">{{ modalContent.title }}</h3>
+              <p class="py-4 text-center text-xl">{{ modalContent.content }}</p>
+            </div>
+            <div class="modal-action absolute -top-4 right-2">
+              <form method="dialog">
+                <button class="btn btn-circle btn-sm font-light bg-primary text-white text-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </div>
     </section>
   </x-container>
@@ -249,7 +269,7 @@
       </p>
     </section>
   </x-container>
-  <x-container>
+  <x-container class="my-10">
     <section class="mb-10">
       <h2 class="font-semibold container-super-title">Employment Cost Calculator</h2>
       <div class="flex flex-wrap gap-5">
@@ -285,6 +305,7 @@ import type {GlobalInterface, GlobalOverviewInterface, GlobalOverview} from "@/i
 import {useRoute} from 'vue-router'
 import {useCountriesWithMobileCodes} from "@/hooks/useCountriesWithMobileCodes";
 import {useGetGlobal} from "@/hooks/useGlobal";
+import {countryFlag} from "@/composables/country-flag";
 
 useHead({
   title: 'CountryPedia - Constellation Global',
@@ -301,6 +322,11 @@ const route = useRoute();
 const $toast = useToast({
   position: "top-right"
 });
+const modalContent = ref({
+  title: '',
+  content: '',
+});
+const modalRef = ref();
 
 const {data: countryData, refetch: fetchGlobal, isLoading: loading} = useGetGlobal(route.params.id as string);
 
@@ -308,11 +334,18 @@ onBeforeMount(async () => {
   await fetchGlobal();
 });
 
-onMounted(() => {
-  console.log({countryData: countryData.value})
-})
-
 const {data: countries} = useCountriesWithMobileCodes();
+
+const handleExtraDetailsModal = async (label: string, value?: string | number) => {
+  if (value && typeof value === 'string') {
+    modalContent.value = {
+      title: label,
+      content: value,
+    };
+    modalRef.value.showModal();
+  }
+
+}
 
 const showCostModal = ref(false)
 const country = ref('')
@@ -337,7 +370,7 @@ const overview: {
   },
   {
     name: 'code',
-    label: 'code'
+    label: 'Code'
   },
   {
     name: 'population',
