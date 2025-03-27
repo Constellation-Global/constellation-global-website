@@ -24,7 +24,7 @@
       <h4 class="font-semibold container-super-title text-linegreen">Usage Terms</h4>
       <div class="flex flex-col gap-3">
         <p class="text-content">
-          <span class="font-semibold">Acceptance of Terms: </span>Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Constellation Global Limited’s relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.
+          <span class="font-semibold">Acceptance of Terms: </span>Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Constellation Global Limited's relationship with you in relation to this website. If you disagree with any part of these terms and conditions, please do not use our website.
         </p>
         <p class="text-content">
           <span class="font-semibold">Definitions: </span>The term ‘Constellation Global Limited’ or ‘Constellation’ or ‘us’ or ‘we’ refers to Constellation Global Limited and its subsidiary companies whose registered office is 71-75 Shelton Street, London, WC2H 9LH, company registration number is 07530420 registered in England and Wales.  The term ‘you’ refers to the user or viewer of our website.

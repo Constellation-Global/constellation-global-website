@@ -19,8 +19,6 @@
     </x-container>
   </div>
 
-  <!--  <our-partners />-->
-
   <x-container>
     <div class="grid gap-10 py-10 text-center lg:py-16 place-items-center lg:grid-cols-2 lg:gap-16 md:text-left">
       <img :src="WhatWeDoImage" alt="What we do" class="order-1 md:order-0"/>
@@ -49,10 +47,12 @@
         <h3 class="container-super-title linegreen">Hiring</h3>
         <div class="container-title">Integrate Team<br/> Members Quickly</div>
         <p>
-          We provide access to the very best candidates in required fields, while ensuring local compliance, without having to worry about administrative responsibilities.
+          We provide access to the very best candidates in required fields, while ensuring local compliance, without
+          having to worry about administrative responsibilities.
         </p>
         <p>
-          Calculate the costs, add benefits and onboard employees using few clicks, - it’s never been easier to manage everything!
+          Calculate the costs, add benefits and onboard employees using few clicks, - it’s never been easier to manage
+          everything!
         </p>
       </div>
       <img :src="HiringImage" alt="Hiring"/>
@@ -65,7 +65,8 @@
         <h3 class="container-super-title linegreen">Payroll</h3>
         <div class="container-title">International payroll made easy</div>
         <p>
-          Ensure full compliance across your multi-country payrolls, with accuracy and safety being primary benefits of our streamlined, encrypted solution.
+          Ensure full compliance across your multi-country payrolls, with accuracy and safety being primary benefits of
+          our streamlined, encrypted solution.
         </p>
         <p>
           We provide detailed overview of your entire payroll process, using our automated and accessible data flows.
@@ -84,7 +85,8 @@
         <h3 class="container-super-title linegreen">Benefits</h3>
         <div class="container-title">Keep your talents — and keep them happy</div>
         <p>
-          Enhance your employee package with local benefits - whether it is Private Medical Insurance, gym card or private pension plan, Constellation Global offers a variety of options regardless of worker’s location.
+          Enhance your employee package with local benefits - whether it is Private Medical Insurance, gym card or
+          private pension plan, Constellation Global offers a variety of options regardless of worker’s location.
         </p>
         <x-button color="accent" outlined class="mt-6" external target="_blank" :href="appConfig.registerLink">
           Start now
@@ -111,23 +113,6 @@
       </div>
     </x-container>
   </div>
-
-  <!--  <x-container>-->
-  <!--    <div class="container-super-title linegreen">Our team</div>-->
-  <!--    <div class="container-title">Meet our Brilliant Team</div>-->
-
-  <!--    <x-two-cols-grid>-->
-  <!--      <img :src="BrilliantTeam" alt=""/>-->
-  <!--      <div class="text-content">-->
-  <!--        <div class="mb-5 text-2xl font-semibold md:text-3xl">Tim Disbrey</div>-->
-  <!--        <div class="my-5 text-lg font-medium md:text-xl">Founder & CEO</div>-->
-  <!--        <p class="text-base leading-7 md:text-base lg:leading-8">Second time founder. 10+ years Special Forces officer. Operational and business experience-->
-  <!--          in over 40 countries. Three Master’s Degrees and a PhD. Speaks German and English.</p>-->
-  <!--        <x-button color="primary" outlined class="px-8 py-2 mt-5 md:px-16">See all</x-button>-->
-  <!--      </div>-->
-  <!--    </x-two-cols-grid>-->
-  <!--  </x-container>-->
-
   <faqs-section/>
 
   <build-team-overseas/>

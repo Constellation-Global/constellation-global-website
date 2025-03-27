@@ -1,7 +1,6 @@
 <template>
     <Teleport to="body">
       <Transition name="modal-fade" @click.self="closeModal" appear>
-      <!-- <Transition name="modal-fade" :handle-close="closeModal" :isOpened="isModalVisible"> -->
         <div class="p-10 modal-wrapper"  v-if="showModal">
             <main class="w-full h-full overflow-auto bg-white rounded-lg">
                 <div v-if="step === 1" class="flex flex-col items-center w-full h-full gap-10 p-10 px-6 overflow-auto bg-white rounded-lg md:px-10">        
@@ -14,13 +13,11 @@
                     <div class="grid md:grid-cols-2 gap-6 md:gap-12 max-w-[1028px]">
                         <div @click="() => selectType('Employee')" :class="[{ 'border border-[#506FF4] shadow-[#506ff42e]': selectedType == 'Employee' }, 'flex flex-col items-center gap-3 p-8 text-center bg-white shadow-lg cursor-pointer rounded-2xl md:gap-5']">
                             <img :src="EmployeeImg" alt="Cost Calculator Countries"  class="w-[200px] h-[200px]" />
-                            <!-- <img class="w-[200px] h-[200px]6" src={EmployeeImg} alt="Man"/> -->
                             <p class="text-xs text-center md:text-sm max-w-[210px] md:max-w-[230px] text-[#42526E]">This is a summary of employment cost for this employee!</p>
                             <h3 class="text-xl md:text-[1.35rem] font-bold mb-4 text-[#42526E]">Employee</h3>
                         </div>
                         <div @click="() => selectType('Contractor')" :class="[{ 'border border-[#506FF4] shadow-[#506ff42e]': selectedType == 'Contractor' }, 'flex flex-col items-center gap-3 p-8 text-center bg-white shadow-lg cursor-pointer rounded-2xl md:gap-5']">
                             <img :src="ContractImg" alt="Cost Calculator Countries"  class="w-[200px] h-[200px]" />
-                            <!-- <img class="w-[200px] h-[200px]6" src={WomananImg} alt="Woman"/> -->
                             <p class="text-xs text-center md:text-sm max-w-[210px] md:max-w-[230px] text-[#42526E]">This is a summary of employment cost for this contractor!</p>
                             <h3 class="text-xl md:text-[1.35rem] font-bold mb-4 text-[#42526E]">Contractor</h3>
                         </div>
@@ -32,9 +29,6 @@
                         >
                         Continue
                         </button>
-                        <!-- <Link href={`/${selected}`} onClick={handleLink}>
-                            <CgButton class="px-20 md:px-28 lg:px-32" type={'button'}>Continue</CgButton>
-                        </Link> -->
                     </div>
                 </div>
                 <div v-if="step === 2" class="flex flex-col w-full h-full gap-3 p-10 px-6 overflow-auto bg-white rounded-lg md:px-10 md:items-center">        
@@ -88,7 +82,7 @@
                             This is a summary of employment cost for this employee!
                         </p>
                         <p class="text-sm md:text-md text-[#626F86]">
-                           <span class="font-medium">PLEASE NOTE:</span> These are estimated costs, precise costs depends on the inadept data, sales team will contact you shortly.
+                           <span class="font-medium">PLEASE NOTE:</span> These are estimated costs. Precise costs depends on indepth data. Sales team will contact you shortly.
                         </p>
                     </div>
                     <div class="flex flex-col w-full max-w-2xl gap-5 p-4 py-6 mx-auto shadow md:gap-10 rounded-xl md:p-10 md:py-12">
@@ -202,14 +196,14 @@
       if (newVal) {
         const body = document.body;
 
-        // If its there, prevent scroll from happening
+        // If it's there, prevent scroll from happening
         if (body && props.showModal) body.style.overflow = "hidden";
       } else {
         document.body.classList.remove('no-scroll');
         // Get the body element
         const body = document.body;
 
-        // If its there, prevent scroll from happening
+        // If it's there, prevent scroll from happening
         if (body) body.style.overflow = "auto";
       }
     });
@@ -218,32 +212,3 @@
         emit('clearModal', false);
     })
 </script>
-<!-- <style scoped>
-
-
-    .modal-fade-enter-from,
-    .modal-fade-leave-to {
-        opacity: 0;
-    }
-
-    .modal-fade-enter-active,
-    .modal-fade-leave-active {
-        transition: 1s ease all;
-    }
-
-    .modal-wrapper {
-        position: fixed;
-        left: 0;
-        top: 0;
-
-        z-index: 500;
-
-        width: 100vw;
-        height: 100vh;
-
-        background: rgba(0, 0, 0, 0.2);
-
-        display: grid;
-        place-items: center;
-    }
-</style> -->

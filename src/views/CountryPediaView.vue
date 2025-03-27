@@ -9,7 +9,7 @@
       </h1>
       <p class="text-sm">Everything employment!</p>
       <div class="w-full max-w-xl px-8 mt-12 md:mt-16">
-        <input v-model="name" id="collection"
+        <input v-model="searchTerms.country" id="collection"
                class="w-full p-3 px-4 text-xs text-black border border-gray-200 rounded-full md:p-4 md:text-sm md:px-8 focus:outline-none"
                placeholder="Search any country" name="collection"/>
       </div>
@@ -20,8 +20,8 @@
     <section class="rounded-md md:bg-white py-10">
       <div class="flex gap-3 overflow-x-auto text-sm no-scrollbar text-center">
         <div v-for="filter in filters"
-             :class="['px-4 py-3 rounded-md flex-1 cursor-pointer whitespace-nowrap', filter.name === zone && 'bg-[#8399E9] text-white']"
-             @click="() => zone = filter.name">
+             :class="['px-4 py-3 rounded-md flex-1 cursor-pointer whitespace-nowrap', filter.name === searchTerms.zone && 'bg-[#8399E9] text-white']"
+             @click="() => setZone(filter.name)">
           {{ filter.name }}
         </div>
       </div>
@@ -31,7 +31,7 @@
   <x-container>
     <section class="md:bg-white md:p-10 p-6 border border-[#606B7D1A] rounded-md mb-12">
       <h2 class="font-semibold container-super-title font-inter">
-        <span v-if="name">Search Term: {{ name }}</span>
+        <span v-if="searchTerms.country">Search Term: {{ searchTerms.country }}</span>
         <span v-else>Country List</span>
       </h2>
       <div
@@ -77,11 +77,13 @@ useHead({
   ]
 })
 
-const zone = ref<string>('All')
-
-const name = ref<string>('');
-
+const searchTerms = ref({zone: 'All', country: ''});
+const topCountries = ref<string[]>(["US", "CN", "JP", "DE", "IN", "GB", "FR", "IT", "BR", "CA", "KR", "AU", "ES", "ID", "NL", "SA", "TR", "CH"]);
 const {data: countryList, refetch: fetchGlobals, isLoading} = useGetGlobals({});
+
+const setZone = (name: string) => {
+  searchTerms.value = {zone: name, country: ''};
+}
 
 onBeforeMount(async () => {
   await fetchGlobals();
@@ -117,14 +119,18 @@ const filters = [
 const filteredCountries = computed(() => {
   if (!countryList.value) return [];
 
-  return countryList.value.filter((country) => {
+  const searchZone = searchTerms.value.zone ? searchTerms.value.zone.toLowerCase() : "";
+  const searchCountry = searchTerms.value.country ? searchTerms.value.country.toLowerCase() : "";
+  let filterList = countryList.value;
+
+  if (searchZone === "top countries") filterList = countryList.value.filter((country) => topCountries.value.includes(country?.overview?.code || ''));
+
+  return filterList.filter((country) => {
     const currentZone = country?.overview?.zone?.toLowerCase() || "";
     const currentCountry = country?.name?.toLowerCase() || "";
-    const searchZone = zone.value ? zone.value.toLowerCase() : "";
-    const searchCountry = name.value ? name.value.toLowerCase() : "";
 
     return currentCountry.includes(searchCountry) &&
-        (currentZone === "" || currentZone == "all" || (currentZone !== "top countries" && currentZone.includes(searchZone)));
+        (["all", "top countries"].includes(searchZone) || currentZone === searchZone);
   });
 });
 

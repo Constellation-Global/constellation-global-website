@@ -1,13 +1,5 @@
 <template>
   <div>
-    <!-- <div class="flex flex-wrap items-center justify-center gap-10 px-6 my-10 md:flex-row md:gap-20 lg:my-20">
-      <component
-          :is="partner.logo"
-          v-for="(partner, i) in partners"
-          :key="i" :title="partner.name"
-          class="text-[#C1C1C1] scale-90 hover:scale-100 hover:text-secondary transition-all ease-in-out duration-200 h-[60px] cursor-pointer"
-      /> -->
-
       <div class="grid flex-wrap items-center justify-center grid-cols-3 px-6 my-10 sm:flex gap-y-2 gap-x-10 md:flex-row xl:gap-x-20 lg:gap-x-14 lg:my-20">
       <component
           :is="partner.logo"
@@ -15,9 +7,6 @@
           :key="i" :title="partner.name"
           class="text-[#C1C1C1] scale-90 hover:scale-100 hover:text-secondary transition-all ease-in-out duration-200 h-[60px] cursor-pointer w-[70%] sm:w-auto max-w-16 lg:max-w-24 place-self-center"
       />
-      <!--      <img-->
-      <!--          class="text-[#C1C1C1] hover:text-secondary transition-all ease-in-out duration-200 h-[60px]"-->
-      <!--          :src="partner.logo" :alt="partner.name" v-for="(partner, i) in partners" :key="i" :title="partner.name"/>-->
     </div>
   </div>
 </template>

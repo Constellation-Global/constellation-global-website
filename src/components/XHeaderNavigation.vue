@@ -43,8 +43,6 @@
             :to="`${a.href}`"
             class="hover:bg-secondary hover:text-white text-base md:text-lg pb-1.5 px-4 font-medium"
             :active-class="route.path == a.href ? 'text-primary border-b-2 border-primary':''">
-            <!-- class="px-4 hover:bg-secondary hover:text-white"
-            :active-class="route.path == a.href?'bg-primary text-white':''"> -->
             {{ a.label }}
           </router-link>
         </li>
