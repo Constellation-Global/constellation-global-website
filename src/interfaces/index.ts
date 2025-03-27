@@ -1,18 +1,30 @@
 export interface SupportInterface {
-    // firstName: string;
-    // lastName: string;
-    // country: string;
-    // companySize: string;
-    // phone: string;
     name: string;
     email: string;
     message: string;
-  }
+}
 
-  export interface CountryInterface {
+export interface SupportResponseInterface {
+    success: boolean;
+    message?: string;
+}
+
+export interface CountryInterface {
     name: string;
     info: CountryInfoInterface;
     employmentOptions: CountryEmploymentOptionsInterface;
+}
+
+export interface GlobalRequestInterface {
+    filters?: { [key: string]: any },
+    page?: number,
+    limit?: number
+}
+
+export interface CountryMobileCodeInterface {
+    name: string;
+    code: string;
+    mobileCode: string;
 }
 
 export interface CountryInfoInterface {
@@ -33,7 +45,6 @@ export interface CountryEmploymentOptionsInterface {
     paymentCurrencyCode: string;
 }
 
-
 // Global section
 export interface CountryEmploymentOptionsInterface {
     isEorEmployable: boolean;
@@ -42,9 +53,9 @@ export interface CountryEmploymentOptionsInterface {
     eorManagementFee: number;
     eorOneTimeSetupFee: number;
     paymentCurrencyCode: string;
-  }
+}
 
-  export interface GlobalOverview {
+export interface GlobalOverview {
     code?: string;
     capital?: string; // capital city
     population?: number;
@@ -53,21 +64,20 @@ export interface CountryEmploymentOptionsInterface {
     workDays: number;
     mobileCode?: string;
     currency?: string;
-    
-    
-    
+
+
     // zone?: string;
     // currencyCode?: string;
     // currencyName?: string;
     // countrycode?: string; // i think we already have it as code
     // employerTax?: string;
-  
+
     // flag?: string;
     // GDP?: string;
     // tickerSymbol?: string;
-  }
+}
 
-  export interface GlobalOverviewInterface {
+export interface GlobalOverviewInterface {
     code?: string;
     mobileCode?: string;
     currencyCode?: string;
@@ -80,7 +90,7 @@ export interface CountryEmploymentOptionsInterface {
     language?: string; // a placeholder needed for the frontend
     languages?: string[];
     employerTax?: string;
-  
+
     flag?: string;
     currency?: string;
     GDP?: string;
@@ -94,71 +104,69 @@ export interface CountryEmploymentOptionsInterface {
     // GDPPerCapita?: string;
     // weeklyworkinghours?: number;
     // dailyworkinghours?: number;
-  }
-  
-  export interface GlobalPayrollInterface {
-    // needs more fields, maybe average will be calcualted from other fields
+}
+
+export interface GlobalPayrollInterface {
+    // needs more fields, maybe average will be calculated from other fields
     description?: string;
     avgEmployerTax?: number;
-  }
-  
-  export type Band = {
+}
+
+export type Band = {
     upperBand?: number;
     lowerBand?: number;
     info?: string;
-  };
-  
-  export interface GlobalTaxDetails {
+};
+
+export interface GlobalTaxDetails {
     info?: string;
     contribution?: number;
     contribution1?: number;
     array?: Band[];
-  }
-  
-  export interface GlobalEmployeeTaxDetails {
+}
+
+export interface GlobalEmployeeTaxDetails {
     employeeIncomeTax: GlobalTaxDetails;
     employeePayrollTax: GlobalTaxDetails;
-  }
-  
-  
-  
-  export interface GlobalTaxInterface {
+}
+
+export interface GlobalTaxInterface {
     employer?: GlobalTaxDetails;
     employee?: GlobalEmployeeTaxDetails
     avgPayrollTax?: number;
     VAT?: number;
-  
+
     socialSecurity?: number;
     healthInsurance?: number;
-  }
-  
-  export interface GlobalHolidayInterface {
+}
+
+export interface GlobalHolidayInterface {
     _id?: string;
     name: string;
     type?: string;
     date?: string | Date;
     description?: string;
-  }
-  
-  export interface GlobalSickLeaveInterface {
+}
+
+export interface GlobalSickLeaveInterface {
     // either leave or sick leave - subject to change
     description?: string;
     leaves?: {
-      type?: string;
-      caveats?: string[];
+        type?: string;
+        caveats?: string[];
     }[];
-  }
-  
-  export interface GlobalTerminationInterface {
+}
+
+export interface GlobalTerminationInterface {
     description?: string;
     periods?: {
-      type?: string;
-      description?: string;
-      caveats?: string[];
+        type?: string;
+        description?: string;
+        caveats?: string[];
     }[];
-  }
-  
-  export interface GlobalInterface {
+}
+
+export interface GlobalInterface {
     _id?: string;
     name: string;
     // about?: string; // now in overview
@@ -169,7 +177,8 @@ export interface CountryEmploymentOptionsInterface {
     holidays?: GlobalHolidayInterface[];
     sickLeave?: GlobalSickLeaveInterface;
     termination?: GlobalTerminationInterface;
-  }
-  // end Global section
-  
-  // for display purposes
+}
+
+// end Global section
+
+// for display purposes

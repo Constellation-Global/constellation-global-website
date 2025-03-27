@@ -11,11 +11,17 @@
               Hire and pay in <span class="text-accent">150+</span> countries
             </div>
           </div>
-          <div class="text-base md:text-xl lg:leading-9">Let us take the wheel and help manage everything related to paying your global workforce.</div>
+          <div class="text-base md:text-xl lg:leading-9">Let us take the wheel and help manage everything related to
+            paying your global workforce.
+          </div>
           <div class="flex flex-wrap gap-5">
-            <select v-model="country" name="" id="" class='p-2 py-1 text-sm text-white bg-transparent border border-white rounded-md outline-none max-w-40'>
+            <select v-model="country" name="" id=""
+                    class='p-2 py-1 text-sm text-white bg-transparent border border-white rounded-md outline-none max-w-40'>
               <option class="bg-secondary" value="">Select Country</option>
-              <option class="bg-secondary"v-for="country in countries" :value="country?.name">{{ country?.name }}</option>
+              <option class="bg-secondary" v-for="country in countries" :value="country?.name">{{
+                  country?.name
+                }}
+              </option>
             </select>
             <x-button color="secondary" target="_blank" @click="handleStart">
               Start Now
@@ -83,7 +89,8 @@
   </x-container>
 
   <build-team-overseas/>
-  <CostCalculator @clearModal="(val) => showCostModal = val || false" @updateType="updateSelectedType" :selectedType="selectedType" :showModal="showCostModal" :closeModal="() => showCostModal = false "  />
+  <CostCalculator @clearModal="(val) => showCostModal = val || false" @updateType="updateSelectedType"
+                  :selectedType="selectedType" :showModal="showCostModal" :closeModal="() => showCostModal = false "/>
   <!-- <button @click="openModal">Open Modal</button> -->
 
 </template>
@@ -98,11 +105,9 @@ import CountriesImage from "@/assets/countries.png";
 import {useHead} from "@vueuse/head";
 import {appConfig} from "@/configs/app.config";
 import CostCalculator from "@/components/CostCalculator.vue";
-import { useFetch } from "@/composables/useFetch";
-import { onMounted, ref } from "vue";
-import { useToast } from "vue-toast-notification";
-import type {CountryInterface} from "@/interfaces"
-import { apiGetCountries } from "@/services";
+import {ref} from "vue";
+import {useToast} from "vue-toast-notification";
+import {useCountriesWithMobileCodes} from "@/hooks/useCountriesWithMobileCodes";
 
 useHead({
   title: 'Pricing - Constellation Global',
@@ -118,11 +123,7 @@ const $toast = useToast({
   position: "top-right"
 });
 
-const {data: countries} = useFetch<CountryInterface[]>({
-    api: apiGetCountries,
-    run: true,
-});
-
+const {data: countries} = useCountriesWithMobileCodes();
 
 const showCostModal = ref(false)
 const country = ref('')

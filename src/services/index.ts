@@ -1,27 +1,19 @@
-import type { SupportInterface } from "@/interfaces";
+import type {
+    CountryMobileCodeInterface,
+    GlobalInterface, GlobalRequestInterface,
+    SupportInterface, SupportResponseInterface
+} from "@/interfaces";
 import BaseService from "@/services/base.service";
 
-export const apiSubmitSupport = (data: SupportInterface) => {
-    return BaseService.post('prospects', data, {headers: {silent: true}});
+export const apiSubmitSupport = async (data: SupportInterface):Promise<SupportResponseInterface> => {
+    return (await BaseService.post('prospects', data, {headers: {silent: true}})).data;
 }
 
-export const apiGetCountries = () => {
-    return BaseService.get('hiring/countries', {headers: {silent: true}});
+export const apiGetCountries = async (): Promise<CountryMobileCodeInterface[]> => {
+    return (await BaseService.get('countrypedia/countries-mobile-code', {headers: {silent: true}})).data;
 }
 
-export const apiGetIcEmployableCountries = () => {
-    return BaseService.get('hiring/countries/ic-employable');
-}
-
-export const apiGetEorEmployableCountries = () => {
-    return BaseService.get('hiring/countries/eor-employable');
-}
-
-export const apiGetGlobals = ({ filters, page, limit }: {
-    filters: { [key: string]: any },
-    page: number,
-    limit: number
-}) => {
+export const apiGetGlobals = async ({filters, page, limit}: GlobalRequestInterface): Promise<GlobalInterface[]> => {
     const config = {
         params: {
             filters: JSON.stringify(filters),
@@ -29,28 +21,22 @@ export const apiGetGlobals = ({ filters, page, limit }: {
             limit,
         },
     }
-    return BaseService.get(`/countrypedia/all`, config);
+    return (await BaseService.get(`/countrypedia/all`, config)).data;
 }
 
-export const apiGetGlobalsByZone = ({ zone }: {
-    zone: string
-}) => {
-    return BaseService.get(`/countrypedia/zone/${zone}`);
+export const apiGetGlobalsByZone = async ({zone}: { zone: string }): Promise<GlobalInterface[]> => {
+    return (await BaseService.get(`/countrypedia/zone/${zone}`)).data;
 }
 
-export const apiSearchGlobals = ({ filters }: {
-    filters: { [key: string]: any },
-}) => {
+export const apiSearchGlobals = async ({filters}: GlobalRequestInterface): Promise<GlobalInterface[]> => {
     const config = {
         params: {
             filters: JSON.stringify(filters),
         },
     }
-    return BaseService.get(`/countrypedia/all`, config);
+    return (await BaseService.get(`/countrypedia/all`, config)).data;
 }
 
-export const apiGetGlobal = ({ id }: {
-    id: string
-}) => {
-    return BaseService.get(`/countrypedia/${id}`);
+export const apiGetGlobal = async ({id}: { id: string }): Promise<GlobalInterface> => {
+    return (await BaseService.get(`/countrypedia/${id}`)).data;
 }
